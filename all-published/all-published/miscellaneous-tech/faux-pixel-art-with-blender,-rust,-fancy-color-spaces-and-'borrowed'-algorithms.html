@@ -1,0 +1,1604 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+  <title>Faux Pixel Art with Blender, Rust, Fancy Color Spaces and 'Borrowed' Algorithms</title>
+  <base href="../../">
+  <meta id="root-path" root-path="../../">
+
+  <link rel="icon" sizes="96x96" href="https://publish-01.obsidian.md/access/f786db9fac45774fa4f0d8112e232d67/favicon-96x96.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes, minimum-scale=1.0, maximum-scale=5.0">
+  <meta charset="UTF-8">
+  <script src="https://code.iconify.design/iconify-icon/1.0.3/iconify-icon.min.js"></script>
+
+  <link rel="stylesheet" href="lib/styles/obsidian-styles.css">
+  <link rel="stylesheet" href="lib/styles/theme.css">
+  <link rel="stylesheet" href="lib/styles/plugin-styles.css">
+  <link rel="stylesheet" href="lib/styles/snippets.css">
+  <style> </style>
+
+
+  <!-- Graph View Data -->
+  <script>
+    let nodes = {
+      "nodeCount": 1,
+      "linkCount": 1,
+      "radii": [7],
+      "labels": ["Faux Pixel Art with Blender, Rust, Fancy Color Spaces and 'Borrowed' Algorithms"],
+      "paths": ["all-published/miscellaneous-tech/faux-pixel-art-with-blender,-rust,-fancy-color-spaces-and-'borrowed'-algorithms.html"],
+      "linkSources": [0],
+      "linkTargets": [0]
+    };
+    let attractionForce = 1;
+    let linkLength = 10;
+    let repulsionForce = 150;
+    let centralForce = 3;
+    let edgePruning = 100;
+  </script>
+
+  <script type="module" src="lib/scripts/graph_view.js"></script>
+
+  <script src="lib/scripts/graph_wasm.js"></script>
+
+  <script src="lib/scripts/tinycolor.js"></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/pixi.js/7.2.4/pixi.min.js" integrity="sha512-Ch/O6kL8BqUwAfCF7Ie5SX1Hin+BJgYH4pNjRqXdTEqMsis1TUYg+j6nnI9uduPjGaj7DN4UKCZgpvoExt6dkw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+  <script src="lib/scripts/webpage.js"></script>
+
+</head>
+
+<body class="theme-dark mod-windows is-frameless is-hidden-frameless obsidian-app show-inline-title show-view-header minimal-theme minimal-everforest-dark minimal-everforest-light colorful-active links-int-on links-ext-on system-shade full-width-media minimal-folding minimal-readable minimal-light minimal-dark chart-default-width table-default-width img-default-width iframe-default-width map-default-width highlightr-rounded" style="--zoom-factor:1; --font-interface-override:&quot;M PLUS 1p&quot;; --font-text-override:Baskervville, &quot;Palatino Linotype&quot;; --font-print-override:Baskervville, &quot;Palatino Linotype&quot;; --font-monospace-override:&quot;M PLUS Code Latin Expanded&quot;; --font-text-size:14px; --line-width:50em; --line-width-adaptive:50em; --file-line-width:50em; --content-width:500em; --sidebar-width:25em; --collapse-arrow-size:0.4em; --tree-horizontal-spacing:1em; --tree-vertical-spacing:0.5em; --sidebar-margin:12px;">
+  <div class="webpage-container">
+    <div class="sidebar-left sidebar">
+      <div class="sidebar-content">
+        <div><label class="theme-toggle-container" for="theme_toggle"><input class="theme-toggle-input" type="checkbox" id="theme_toggle">
+            <div class="toggle-background"></div>
+          </label></div>
+        <div class="tree-container file-tree mod-nav-indicator" data-depth="0">
+          <div class="tree-header"><span class="sidebar-section-header">David's Blog</span><button class="clickable-icon collapse-tree-button is-collapsed"><iconify-icon icon="ph:arrows-in-line-horizontal-bold" width="18px" height="18px" rotate="90deg" color="currentColor"></iconify-icon></button></div>
+          <div class="tree-scroll-area">
+            <div class="tree-item mod-tree-folder mod-collapsible is-collapsed" data-depth="1">
+              <div class="tree-item-contents">
+                <div class="tree-item-icon collapse-icon"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="svg-icon right-triangle">
+                    <path d="M3 8L12 17L21 8"></path>
+                  </svg></div><a class="tree-item-link" href="all-published"><span class="tree-item-title">All Published</span></a>
+              </div>
+              <div class="tree-item-children">
+                <div class="tree-item mod-tree-folder mod-collapsible is-collapsed" data-depth="2">
+                  <div class="tree-item-contents">
+                    <div class="tree-item-icon collapse-icon"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="svg-icon right-triangle">
+                        <path d="M3 8L12 17L21 8"></path>
+                      </svg></div><a class="tree-item-link" href="all-published/miscellaneous-tech"><span class="tree-item-title">Miscellaneous Tech</span></a>
+                  </div>
+                  <div class="tree-item-children">
+                    <div class="tree-item mod-tree-file" data-depth="3">
+                      <div class="tree-item-contents"><a class="tree-item-link" href="all-published/miscellaneous-tech/faux-pixel-art-with-blender,-rust,-fancy-color-spaces-and-'borrowed'-algorithms.html"><span class="tree-item-title">Faux Pixel Art with Blender, Rust, Fancy Color Spaces and 'Borrowed' Algorithms</span></a></div>
+                      <div class="tree-item-children"></div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="document-container">
+      <div class="markdown-preview-view markdown-rendered node-insert-event is-readable-line-width allow-fold-headings show-indentation-guide allow-fold-lists" style="tab-size: 4;" tabindex="-1">
+        <style id="MJX-CHTML-styles">
+          mjx-container[jax="CHTML"] {
+            line-height: 0;
+          }
+
+          mjx-container [space="1"] {
+            margin-left: 0.111em;
+          }
+
+          mjx-container [space="2"] {
+            margin-left: 0.167em;
+          }
+
+          mjx-container [space="3"] {
+            margin-left: 0.222em;
+          }
+
+          mjx-container [space="4"] {
+            margin-left: 0.278em;
+          }
+
+          mjx-container [space="5"] {
+            margin-left: 0.333em;
+          }
+
+          mjx-container [rspace="1"] {
+            margin-right: 0.111em;
+          }
+
+          mjx-container [rspace="2"] {
+            margin-right: 0.167em;
+          }
+
+          mjx-container [rspace="3"] {
+            margin-right: 0.222em;
+          }
+
+          mjx-container [rspace="4"] {
+            margin-right: 0.278em;
+          }
+
+          mjx-container [rspace="5"] {
+            margin-right: 0.333em;
+          }
+
+          mjx-container [size="s"] {
+            font-size: 70.7%;
+          }
+
+          mjx-container [size="ss"] {
+            font-size: 50%;
+          }
+
+          mjx-container [size="Tn"] {
+            font-size: 60%;
+          }
+
+          mjx-container [size="sm"] {
+            font-size: 85%;
+          }
+
+          mjx-container [size="lg"] {
+            font-size: 120%;
+          }
+
+          mjx-container [size="Lg"] {
+            font-size: 144%;
+          }
+
+          mjx-container [size="LG"] {
+            font-size: 173%;
+          }
+
+          mjx-container [size="hg"] {
+            font-size: 207%;
+          }
+
+          mjx-container [size="HG"] {
+            font-size: 249%;
+          }
+
+          mjx-container [width="full"] {
+            width: 100%;
+          }
+
+          mjx-box {
+            display: inline-block;
+          }
+
+          mjx-block {
+            display: block;
+          }
+
+          mjx-itable {
+            display: inline-table;
+          }
+
+          mjx-row {
+            display: table-row;
+          }
+
+          mjx-row>* {
+            display: table-cell;
+          }
+
+          mjx-mtext {
+            display: inline-block;
+          }
+
+          mjx-mstyle {
+            display: inline-block;
+          }
+
+          mjx-merror {
+            display: inline-block;
+            color: red;
+            background-color: yellow;
+          }
+
+          mjx-mphantom {
+            visibility: hidden;
+          }
+
+          mjx-assistive-mml {
+            top: 0px;
+            left: 0px;
+            clip: rect(1px, 1px, 1px, 1px);
+            user-select: none;
+            position: absolute !important;
+            padding: 1px 0px 0px !important;
+            border: 0px !important;
+            display: block !important;
+            width: auto !important;
+            overflow: hidden !important;
+          }
+
+          mjx-assistive-mml[display="block"] {
+            width: 100% !important;
+          }
+
+          mjx-math {
+            display: inline-block;
+            text-align: left;
+            line-height: 0;
+            text-indent: 0px;
+            font-style: normal;
+            font-weight: normal;
+            font-size: 100%;
+            letter-spacing: normal;
+            border-collapse: collapse;
+            overflow-wrap: normal;
+            word-spacing: normal;
+            white-space: nowrap;
+            direction: ltr;
+            padding: 1px 0px;
+          }
+
+          mjx-container[jax="CHTML"][display="true"] {
+            display: block;
+            text-align: center;
+            margin: 1em 0px;
+          }
+
+          mjx-container[jax="CHTML"][display="true"][width="full"] {
+            display: flex;
+          }
+
+          mjx-container[jax="CHTML"][display="true"] mjx-math {
+            padding: 0px;
+          }
+
+          mjx-container[jax="CHTML"][justify="left"] {
+            text-align: left;
+          }
+
+          mjx-container[jax="CHTML"][justify="right"] {
+            text-align: right;
+          }
+
+          mjx-msup {
+            display: inline-block;
+            text-align: left;
+          }
+
+          mjx-mi {
+            display: inline-block;
+            text-align: left;
+          }
+
+          mjx-c {
+            display: inline-block;
+          }
+
+          mjx-utext {
+            display: inline-block;
+            padding: 0.75em 0px 0.2em;
+          }
+
+          mjx-texatom {
+            display: inline-block;
+            text-align: left;
+          }
+
+          mjx-mn {
+            display: inline-block;
+            text-align: left;
+          }
+
+          mjx-mo {
+            display: inline-block;
+            text-align: left;
+          }
+
+          mjx-stretchy-h {
+            display: inline-table;
+            width: 100%;
+          }
+
+          mjx-stretchy-h>* {
+            display: table-cell;
+            width: 0px;
+          }
+
+          mjx-stretchy-h>*>mjx-c {
+            display: inline-block;
+            transform: scaleX(1);
+          }
+
+          mjx-stretchy-h>*>mjx-c::before {
+            display: inline-block;
+            width: initial;
+          }
+
+          mjx-stretchy-h>mjx-ext {
+            overflow: clip visible;
+            width: 100%;
+          }
+
+          mjx-stretchy-h>mjx-ext>mjx-c::before {
+            transform: scaleX(500);
+          }
+
+          mjx-stretchy-h>mjx-ext>mjx-c {
+            width: 0px;
+          }
+
+          mjx-stretchy-h>mjx-beg>mjx-c {
+            margin-right: -0.1em;
+          }
+
+          mjx-stretchy-h>mjx-end>mjx-c {
+            margin-left: -0.1em;
+          }
+
+          mjx-stretchy-v {
+            display: inline-block;
+          }
+
+          mjx-stretchy-v>* {
+            display: block;
+          }
+
+          mjx-stretchy-v>mjx-beg {
+            height: 0px;
+          }
+
+          mjx-stretchy-v>mjx-end>mjx-c {
+            display: block;
+          }
+
+          mjx-stretchy-v>*>mjx-c {
+            transform: scaleY(1);
+            transform-origin: left center;
+            overflow: hidden;
+          }
+
+          mjx-stretchy-v>mjx-ext {
+            display: block;
+            height: 100%;
+            box-sizing: border-box;
+            border: 0px solid transparent;
+            overflow: visible clip;
+          }
+
+          mjx-stretchy-v>mjx-ext>mjx-c::before {
+            width: initial;
+            box-sizing: border-box;
+          }
+
+          mjx-stretchy-v>mjx-ext>mjx-c {
+            transform: scaleY(500) translateY(0.075em);
+            overflow: visible;
+          }
+
+          mjx-mark {
+            display: inline-block;
+            height: 0px;
+          }
+
+          mjx-c::before {
+            display: block;
+            width: 0px;
+          }
+
+          .MJX-TEX {
+            font-family: MJXZERO, MJXTEX;
+          }
+
+          .TEX-B {
+            font-family: MJXZERO, MJXTEX-B;
+          }
+
+          .TEX-I {
+            font-family: MJXZERO, MJXTEX-I;
+          }
+
+          .TEX-MI {
+            font-family: MJXZERO, MJXTEX-MI;
+          }
+
+          .TEX-BI {
+            font-family: MJXZERO, MJXTEX-BI;
+          }
+
+          .TEX-S1 {
+            font-family: MJXZERO, MJXTEX-S1;
+          }
+
+          .TEX-S2 {
+            font-family: MJXZERO, MJXTEX-S2;
+          }
+
+          .TEX-S3 {
+            font-family: MJXZERO, MJXTEX-S3;
+          }
+
+          .TEX-S4 {
+            font-family: MJXZERO, MJXTEX-S4;
+          }
+
+          .TEX-A {
+            font-family: MJXZERO, MJXTEX-A;
+          }
+
+          .TEX-C {
+            font-family: MJXZERO, MJXTEX-C;
+          }
+
+          .TEX-CB {
+            font-family: MJXZERO, MJXTEX-CB;
+          }
+
+          .TEX-FR {
+            font-family: MJXZERO, MJXTEX-FR;
+          }
+
+          .TEX-FRB {
+            font-family: MJXZERO, MJXTEX-FRB;
+          }
+
+          .TEX-SS {
+            font-family: MJXZERO, MJXTEX-SS;
+          }
+
+          .TEX-SSB {
+            font-family: MJXZERO, MJXTEX-SSB;
+          }
+
+          .TEX-SSI {
+            font-family: MJXZERO, MJXTEX-SSI;
+          }
+
+          .TEX-SC {
+            font-family: MJXZERO, MJXTEX-SC;
+          }
+
+          .TEX-T {
+            font-family: MJXZERO, MJXTEX-T;
+          }
+
+          .TEX-V {
+            font-family: MJXZERO, MJXTEX-V;
+          }
+
+          .TEX-VB {
+            font-family: MJXZERO, MJXTEX-VB;
+          }
+
+          mjx-stretchy-v mjx-c,
+          mjx-stretchy-h mjx-c {
+            font-family: MJXZERO, MJXTEX-S1, MJXTEX-S4, MJXTEX, MJXTEX-A !important;
+          }
+
+          @font-face {
+            font-family: MJXZERO;
+            src: url("app://obsidian.md/lib/mathjax/output/chtml/fonts/woff-v2/MathJax_Zero.woff") format("woff");
+          }
+
+          @font-face {
+            font-family: MJXTEX;
+            src: url("app://obsidian.md/lib/mathjax/output/chtml/fonts/woff-v2/MathJax_Main-Regular.woff") format("woff");
+          }
+
+          @font-face {
+            font-family: MJXTEX-B;
+            src: url("app://obsidian.md/lib/mathjax/output/chtml/fonts/woff-v2/MathJax_Main-Bold.woff") format("woff");
+          }
+
+          @font-face {
+            font-family: MJXTEX-I;
+            src: url("app://obsidian.md/lib/mathjax/output/chtml/fonts/woff-v2/MathJax_Math-Italic.woff") format("woff");
+          }
+
+          @font-face {
+            font-family: MJXTEX-MI;
+            src: url("app://obsidian.md/lib/mathjax/output/chtml/fonts/woff-v2/MathJax_Main-Italic.woff") format("woff");
+          }
+
+          @font-face {
+            font-family: MJXTEX-BI;
+            src: url("app://obsidian.md/lib/mathjax/output/chtml/fonts/woff-v2/MathJax_Math-BoldItalic.woff") format("woff");
+          }
+
+          @font-face {
+            font-family: MJXTEX-S1;
+            src: url("app://obsidian.md/lib/mathjax/output/chtml/fonts/woff-v2/MathJax_Size1-Regular.woff") format("woff");
+          }
+
+          @font-face {
+            font-family: MJXTEX-S2;
+            src: url("app://obsidian.md/lib/mathjax/output/chtml/fonts/woff-v2/MathJax_Size2-Regular.woff") format("woff");
+          }
+
+          @font-face {
+            font-family: MJXTEX-S3;
+            src: url("app://obsidian.md/lib/mathjax/output/chtml/fonts/woff-v2/MathJax_Size3-Regular.woff") format("woff");
+          }
+
+          @font-face {
+            font-family: MJXTEX-S4;
+            src: url("app://obsidian.md/lib/mathjax/output/chtml/fonts/woff-v2/MathJax_Size4-Regular.woff") format("woff");
+          }
+
+          @font-face {
+            font-family: MJXTEX-A;
+            src: url("app://obsidian.md/lib/mathjax/output/chtml/fonts/woff-v2/MathJax_AMS-Regular.woff") format("woff");
+          }
+
+          @font-face {
+            font-family: MJXTEX-C;
+            src: url("app://obsidian.md/lib/mathjax/output/chtml/fonts/woff-v2/MathJax_Calligraphic-Regular.woff") format("woff");
+          }
+
+          @font-face {
+            font-family: MJXTEX-CB;
+            src: url("app://obsidian.md/lib/mathjax/output/chtml/fonts/woff-v2/MathJax_Calligraphic-Bold.woff") format("woff");
+          }
+
+          @font-face {
+            font-family: MJXTEX-FR;
+            src: url("app://obsidian.md/lib/mathjax/output/chtml/fonts/woff-v2/MathJax_Fraktur-Regular.woff") format("woff");
+          }
+
+          @font-face {
+            font-family: MJXTEX-FRB;
+            src: url("app://obsidian.md/lib/mathjax/output/chtml/fonts/woff-v2/MathJax_Fraktur-Bold.woff") format("woff");
+          }
+
+          @font-face {
+            font-family: MJXTEX-SS;
+            src: url("app://obsidian.md/lib/mathjax/output/chtml/fonts/woff-v2/MathJax_SansSerif-Regular.woff") format("woff");
+          }
+
+          @font-face {
+            font-family: MJXTEX-SSB;
+            src: url("app://obsidian.md/lib/mathjax/output/chtml/fonts/woff-v2/MathJax_SansSerif-Bold.woff") format("woff");
+          }
+
+          @font-face {
+            font-family: MJXTEX-SSI;
+            src: url("app://obsidian.md/lib/mathjax/output/chtml/fonts/woff-v2/MathJax_SansSerif-Italic.woff") format("woff");
+          }
+
+          @font-face {
+            font-family: MJXTEX-SC;
+            src: url("app://obsidian.md/lib/mathjax/output/chtml/fonts/woff-v2/MathJax_Script-Regular.woff") format("woff");
+          }
+
+          @font-face {
+            font-family: MJXTEX-T;
+            src: url("app://obsidian.md/lib/mathjax/output/chtml/fonts/woff-v2/MathJax_Typewriter-Regular.woff") format("woff");
+          }
+
+          @font-face {
+            font-family: MJXTEX-V;
+            src: url("app://obsidian.md/lib/mathjax/output/chtml/fonts/woff-v2/MathJax_Vector-Regular.woff") format("woff");
+          }
+
+          @font-face {
+            font-family: MJXTEX-VB;
+            src: url("app://obsidian.md/lib/mathjax/output/chtml/fonts/woff-v2/MathJax_Vector-Bold.woff") format("woff");
+          }
+
+          mjx-c.mjx-c1D45B.TEX-I::before {
+            padding: 0.442em 0.6em 0.011em 0px;
+            content: "n";
+          }
+
+          mjx-c.mjx-c32::before {
+            padding: 0.666em 0.5em 0px 0px;
+            content: "2";
+          }
+
+          mjx-c.mjx-cD7::before {
+            padding: 0.491em 0.778em 0px 0px;
+            content: "×";
+          }
+
+          mjx-c.mjx-c34::before {
+            padding: 0.677em 0.5em 0px 0px;
+            content: "4";
+          }
+        </style>
+        <div class="markdown-preview-sizer markdown-preview-section" style="padding-bottom: ; padding-top: var(--file-margins); padding-right: var(--file-margins); padding-left: var(--file-margins); width: 100%; position: absolute;">
+          <div class="markdown-preview-pusher" style="width: 1px; height: 0.1px; margin-bottom: 0px;"></div>
+          <div class="mod-header">
+            <div class="inline-title" contenteditable="true" spellcheck="true" autocapitalize="on" tabindex="-1" enterkeyhint="done">Faux Pixel Art with Blender, Rust, Fancy Color Spaces and 'Borrowed' Algorithms</div>
+          </div>
+          <div>
+            <blockquote>
+              <p><em><code>By: David Cosby</code><br>
+                  <code>8.6.2023</code><br>
+                  <a rel="noopener" class="external-link" href="https://twitter.com/cosbdev" target="_blank">https://twitter.com/cosbdev</a></em></p>
+            </blockquote>
+          </div>
+          <div>
+            <p>A long-time dream of mine has been to make a game that uses shaders to display 3-dimensional worlds in a classy pixel-art style, much like what <a data-tooltip-position="top" aria-label="https://www.youtube.com/@t3ssel8r" rel="noopener" class="external-link" href="https://www.youtube.com/@t3ssel8r" target="_blank">T3ssell8r</a> has been doing for a while now. The appeal was to introduce more advanced techniques from the world of 3D graphics into the pixel-art style (think lights and shadows, global illumination, refractive materials, etc.)</p>
+          </div>
+          <div>
+            <p>Unfortunately, this isn't the plan for the game I'm working on right now, but I just couldn't stop myself from playing with these ideas anyways. Today I'm going to share the approach I've come up with to create pixel art sprites and VFX for my game.</p>
+          </div>
+          <div>
+            <h1 data-heading="Setting Up Blender" id="Setting_Up_Blender">Setting Up Blender</h1>
+          </div>
+          <div>
+            <div data-callout-metadata="" data-callout-fold="-" data-callout="warning" class="callout is-collapsible is-collapsed">
+              <div class="callout-title">
+                <div class="callout-icon"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="svg-icon lucide-alert-triangle">
+                    <path d="m21.73 18-8-14a2 2 0 0 0-3.48 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3Z"></path>
+                    <line x1="12" y1="9" x2="12" y2="13"></line>
+                    <line x1="12" y1="17" x2="12.01" y2="17"></line>
+                  </svg></div>
+                <div class="callout-title-inner">Warning: Low-Effort Explanation Ahead!</div>
+                <div class="callout-fold is-collapsed"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="svg-icon lucide-chevron-down">
+                    <polyline points="6 9 12 15 18 9"></polyline>
+                  </svg></div>
+              </div>
+              <div class="callout-content" style="display: none;">
+                <p><em>To be honest, the blender setup is nothing fancy so I'm not going to go into too much detail in this section. If you have any questions beyond what's covered here, <a data-tooltip-position="top" aria-label="https://twitter.com/cosbdev" rel="noopener" class="external-link" href="https://twitter.com/cosbdev" target="_blank">feel free to reach out to me.</a></em></p>
+              </div>
+            </div>
+          </div>
+          <div>
+            <p>This post is going to be more about image processing than it is about the blender setup, but I'll quickly go over my steps for getting pixel art-ish looking renders out of blender.</p>
+          </div>
+          <div>
+            <ol>
+              <li data-line="0">
+                <p>First, I position an orthographic camera over the scene in a way I'd expect the camera to be positioned for my top-down game.<br>
+                  <span alt="blender_setup1.png" src="blender_setup1.png" class="internal-embed media-embed image-embed is-loaded"><img alt="blender_setup1.png" src="lib\media\blender_setup1.png"></span>
+                </p>
+              </li>
+              <li data-line="3">
+                <p>I set the output resolution to <code>640x360</code> and the <a data-tooltip-position="top" aria-label="https://docs.blender.org/manual/en/latest/render/cycles/render_settings/film.html#pixel-filter" rel="noopener" class="external-link" href="https://docs.blender.org/manual/en/latest/render/cycles/render_settings/film.html#pixel-filter" target="_blank">pixel filter</a> to the lowest possible value to mitigate anti-aliasing.</p>
+              </li>
+              <li data-line="5">
+                <p>Lastly, I turned on Freestyle line art to automatically apply outlines to objects in my scene. I'm not totally happy with the way these turn out sometimes, so I'll have to play with it more.</p>
+              </li>
+            </ol>
+          </div>
+          <div>
+            <p>When we hit render, we get this:</p>
+          </div>
+          <div>
+            <div data-callout-metadata="" data-callout-fold="+" data-callout="success" class="callout is-collapsible">
+              <div class="callout-title">
+                <div class="callout-icon"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="svg-icon lucide-check">
+                    <polyline points="20 6 9 17 4 12"></polyline>
+                  </svg></div>
+                <div class="callout-title-inner">Output</div>
+                <div class="callout-fold"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="svg-icon lucide-chevron-down">
+                    <polyline points="6 9 12 15 18 9"></polyline>
+                  </svg></div>
+              </div>
+              <div class="callout-content">
+                <p><span alt="demo1.png" src="demo1.png" class="internal-embed media-embed image-embed is-loaded"><img alt="demo1.png" src="lib\media\demo1.png"></span></p>
+              </div>
+            </div>
+          </div>
+          <div>
+            <p>Not bad for faux pixel art, but we can do much better.</p>
+          </div>
+          <div>
+            <h1 data-heading="Matching to a Color Palette" id="Matching_to_a_Color_Palette">Matching to a Color Palette</h1>
+          </div>
+          <div>
+            <p>Part of what gives pixel art its charm is the creative usage of a limited color palette. In the image above, there are hundreds of unique colors! Let's see if we can chop that down a bit.</p>
+          </div>
+          <div>
+            <p>Before we get into the nitty-gritty of image processing, lets set up everything we need to start reading and writing pixel values.</p>
+          </div>
+          <div>
+            <p>Ideally this would be a shader written in some sort of shading language, but since I'm trying to improve my rust skills and it's been a while since I've written shader code, I'm just going to do this all in rust. For image input and output I'm using the <a data-tooltip-position="top" aria-label="https://docs.rs/image/latest/image/" rel="noopener" class="external-link" href="https://docs.rs/image/latest/image/" target="_blank">Image</a> crate and for color manipulation I'm using <a data-tooltip-position="top" aria-label="https://docs.rs/palette/latest/palette/" rel="noopener" class="external-link" href="https://docs.rs/palette/latest/palette/" target="_blank">Palette</a>.</p>
+          </div>
+          <div>
+            <pre class="language-rust" tabindex="0"><code class="language-rust is-loaded"><span class="token keyword">use</span> <span class="token namespace">image<span class="token punctuation">::</span></span><span class="token punctuation">{</span><span class="token namespace">io<span class="token punctuation">::</span></span><span class="token class-name">Reader</span><span class="token punctuation">,</span> <span class="token class-name">ImageError</span><span class="token punctuation">,</span> <span class="token class-name">ImageBuffer</span><span class="token punctuation">}</span><span class="token punctuation">;</span>
+
+<span class="token keyword">fn</span> <span class="token function-definition function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">-&gt;</span> <span class="token class-name">Result</span><span class="token operator">&lt;</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token class-name">ImageError</span><span class="token operator">&gt;</span> <span class="token punctuation">{</span>
+	<span class="token keyword">let</span> img <span class="token operator">=</span> <span class="token class-name">Reader</span><span class="token punctuation">::</span><span class="token function">open</span><span class="token punctuation">(</span><span class="token constant">IMAGE_PATH</span><span class="token punctuation">)</span><span class="token operator">?</span><span class="token punctuation">.</span><span class="token function">decode</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">?</span><span class="token punctuation">;</span>
+	<span class="token keyword">let</span> pixels <span class="token operator">=</span> img<span class="token punctuation">.</span><span class="token function">as_rgba8</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">unwrap</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">enumerate_pixels</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+	<span class="token keyword">let</span> <span class="token keyword">mut</span> output_buffer <span class="token operator">=</span> <span class="token class-name">ImageBuffer</span><span class="token punctuation">::</span><span class="token function">new</span><span class="token punctuation">(</span>img<span class="token punctuation">.</span><span class="token function">width</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span> img<span class="token punctuation">.</span><span class="token function">height</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+	
+	<span class="token keyword">for</span> pixel <span class="token keyword">in</span> pixels <span class="token punctuation">{</span>
+		<span class="token comment">// start doing witchcraft here!</span>
+	<span class="token punctuation">}</span>
+	output_buffer<span class="token punctuation">.</span><span class="token function">save</span><span class="token punctuation">(</span><span class="token string">"img/output.png"</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">unwrap</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+	<span class="token class-name">Ok</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+<span class="token punctuation">}</span>
+</code><button class="copy-code-button">Copy</button></pre>
+          </div>
+          <div>
+            <p>I've seen a lot of solutions to this limited color palette problem that just <a data-tooltip-position="top" aria-label="https://en.wikipedia.org/wiki/Color_quantization" rel="noopener" class="external-link" href="https://en.wikipedia.org/wiki/Color_quantization" target="_blank">quantize</a>the image down until we've got the number of colors we're looking for. I feel like we could get so much character out of our final image if we used a proper pixel art color palette. Plus, for use in an actual video game, we need some promise of uniformity otherwise everything is just going to look like a mess.</p>
+          </div>
+          <div>
+            <h2 data-heading="Bringing in the Color Palette" id="Bringing_in_the_Color_Palette" style="display: flex;">
+              <div class="heading-collapse-indicator collapse-indicator collapse-icon"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="svg-icon right-triangle">
+                  <path d="M3 8L12 17L21 8"></path>
+                </svg></div>Bringing in the Color Palette
+            </h2>
+          </div>
+          <div>
+            <p>For this first demo, I'll be using this pretty little color palette I found on <a data-tooltip-position="top" aria-label="https://lospec.com/" rel="noopener" class="external-link" href="https://lospec.com/" target="_blank">lospec</a>, called <a data-tooltip-position="top" aria-label="https://lospec.com/palette-list/archerer48" rel="noopener" class="external-link" href="https://lospec.com/palette-list/archerer48" target="_blank">Archer48.</a></p>
+          </div>
+          <div>
+            <p><span alt="archer_palette.png" src="archer_palette.png" class="internal-embed media-embed image-embed is-loaded"><img alt="archer_palette.png" src="lib\media\archer_palette.png"></span></p>
+          </div>
+          <div>
+            <p>To make this palette easy to swap in and out, I'll just be plugging the hex values into the code.</p>
+          </div>
+          <div>
+            <pre class="language-rust" tabindex="0"><code class="language-rust is-loaded"><span class="token keyword">const</span> <span class="token constant">PALETTE_HEX</span><span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token operator">&amp;</span><span class="token keyword">str</span><span class="token punctuation">;</span> <span class="token number">48</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token punctuation">[</span>
+	<span class="token string">"1b112c"</span><span class="token punctuation">,</span> <span class="token string">"413047"</span><span class="token punctuation">,</span> <span class="token string">"543e54"</span><span class="token punctuation">,</span> <span class="token string">"75596f"</span><span class="token punctuation">,</span> <span class="token string">"91718b"</span><span class="token punctuation">,</span> <span class="token string">"b391aa"</span><span class="token punctuation">,</span> <span class="token string">"ccb3c6"</span><span class="token punctuation">,</span> <span class="token string">"e3cfe3"</span><span class="token punctuation">,</span> <span class="token string">"fff7ff"</span><span class="token punctuation">,</span> <span class="token string">"fffbb5"</span><span class="token punctuation">,</span> <span class="token string">"faf38e"</span><span class="token punctuation">,</span> <span class="token string">"f7d076"</span><span class="token punctuation">,</span> <span class="token string">"fa9c69"</span><span class="token punctuation">,</span> <span class="token string">"eb7363"</span><span class="token punctuation">,</span> <span class="token string">"e84545"</span><span class="token punctuation">,</span> <span class="token string">"c22e53"</span><span class="token punctuation">,</span> <span class="token string">"943054"</span><span class="token punctuation">,</span> <span class="token string">"612147"</span><span class="token punctuation">,</span> <span class="token string">"3d173c"</span><span class="token punctuation">,</span> <span class="token string">"3f233c"</span><span class="token punctuation">,</span> <span class="token string">"66334b"</span><span class="token punctuation">,</span> <span class="token string">"8c4b63"</span><span class="token punctuation">,</span> <span class="token string">"c16a7d"</span><span class="token punctuation">,</span> <span class="token string">"e5959f"</span><span class="token punctuation">,</span> <span class="token string">"ffccd0"</span><span class="token punctuation">,</span> <span class="token string">"dd8d9f"</span><span class="token punctuation">,</span> <span class="token string">"c8658d"</span><span class="token punctuation">,</span> <span class="token string">"b63f82"</span><span class="token punctuation">,</span> <span class="token string">"9e2083"</span><span class="token punctuation">,</span> <span class="token string">"731f7a"</span><span class="token punctuation">,</span> <span class="token string">"47195d"</span><span class="token punctuation">,</span> <span class="token string">"2a143d"</span><span class="token punctuation">,</span> <span class="token string">"183042"</span><span class="token punctuation">,</span> <span class="token string">"1e5451"</span><span class="token punctuation">,</span> <span class="token string">"2a6957"</span><span class="token punctuation">,</span> <span class="token string">"3b804d"</span><span class="token punctuation">,</span> <span class="token string">"5aa653"</span><span class="token punctuation">,</span> <span class="token string">"86cf74"</span><span class="token punctuation">,</span> <span class="token string">"caf095"</span><span class="token punctuation">,</span> <span class="token string">"e0f0bd"</span><span class="token punctuation">,</span> <span class="token string">"3f275e"</span><span class="token punctuation">,</span> <span class="token string">"3f317a"</span><span class="token punctuation">,</span><span class="token string">"3c548f"</span><span class="token punctuation">,</span> <span class="token string">"456aa1"</span><span class="token punctuation">,</span> <span class="token string">"4a84b0"</span><span class="token punctuation">,</span> <span class="token string">"56aec4"</span><span class="token punctuation">,</span> <span class="token string">"92d7d9"</span><span class="token punctuation">,</span> <span class="token string">"c3ebe3"</span><span class="token punctuation">,</span>
+<span class="token punctuation">]</span><span class="token punctuation">;</span>
+</code><button class="copy-code-button">Copy</button></pre>
+          </div>
+          <div>
+            <p>Though if we actually want to use this data, we're going to have to convert the palette into RGB.</p>
+          </div>
+          <div>
+            <pre class="language-rust" tabindex="0"><code class="language-rust is-loaded"><span class="token keyword">use</span> <span class="token namespace">palette<span class="token punctuation">::</span></span><span class="token class-name">Srgb</span><span class="token punctuation">;</span>
+
+<span class="token keyword">fn</span> <span class="token function-definition function">palette_as_rgb</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">-&gt;</span> <span class="token class-name">Vec</span><span class="token operator">&lt;</span><span class="token class-name">Srgb</span><span class="token operator">&gt;</span> <span class="token punctuation">{</span>
+	<span class="token keyword">let</span> <span class="token keyword">mut</span> rgb_palette<span class="token punctuation">:</span> <span class="token class-name">Vec</span><span class="token operator">&lt;</span><span class="token class-name">Srgb</span><span class="token operator">&gt;</span> <span class="token operator">=</span> <span class="token macro property">vec!</span><span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+	<span class="token keyword">for</span> hex <span class="token keyword">in</span> <span class="token constant">PALETTE_HEX</span> <span class="token punctuation">{</span>
+		<span class="token keyword">let</span> rgb <span class="token operator">=</span> <span class="token function">hex_to_rgb</span><span class="token punctuation">(</span>hex<span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">unwrap</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+		rgb_palette<span class="token punctuation">.</span><span class="token function">push</span><span class="token punctuation">(</span>rgb<span class="token punctuation">)</span><span class="token punctuation">;</span>
+	<span class="token punctuation">}</span>
+	rgb_palette
+	<span class="token punctuation">}</span>
+	
+<span class="token keyword">fn</span> <span class="token function-definition function">hex_to_rgb</span><span class="token punctuation">(</span>hex<span class="token punctuation">:</span> <span class="token operator">&amp;</span><span class="token keyword">str</span><span class="token punctuation">)</span> <span class="token punctuation">-&gt;</span> <span class="token class-name">Result</span><span class="token operator">&lt;</span><span class="token class-name">Srgb</span><span class="token punctuation">,</span> <span class="token operator">&amp;</span><span class="token lifetime-annotation symbol">'static</span> <span class="token keyword">str</span><span class="token operator">&gt;</span> <span class="token punctuation">{</span>
+	<span class="token keyword">if</span> hex<span class="token punctuation">.</span><span class="token function">len</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">!=</span> <span class="token number">6</span> <span class="token punctuation">{</span>
+		<span class="token keyword">return</span> <span class="token class-name">Err</span><span class="token punctuation">(</span><span class="token string">"Invalid hex color code"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+	<span class="token punctuation">}</span>
+	
+	<span class="token keyword">let</span> r <span class="token operator">=</span> <span class="token keyword">u8</span><span class="token punctuation">::</span><span class="token function">from_str_radix</span><span class="token punctuation">(</span><span class="token operator">&amp;</span>hex<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">..</span><span class="token number">2</span><span class="token punctuation">]</span><span class="token punctuation">,</span> <span class="token number">16</span><span class="token punctuation">)</span>
+		<span class="token punctuation">.</span><span class="token function">map_err</span><span class="token punctuation">(</span><span class="token closure-params"><span class="token closure-punctuation punctuation">|</span>_<span class="token closure-punctuation punctuation">|</span></span> <span class="token string">"Invalid hex color code"</span><span class="token punctuation">)</span><span class="token operator">?</span><span class="token punctuation">;</span>
+	<span class="token keyword">let</span> g <span class="token operator">=</span> <span class="token keyword">u8</span><span class="token punctuation">::</span><span class="token function">from_str_radix</span><span class="token punctuation">(</span><span class="token operator">&amp;</span>hex<span class="token punctuation">[</span><span class="token number">2</span><span class="token punctuation">..</span><span class="token number">4</span><span class="token punctuation">]</span><span class="token punctuation">,</span> <span class="token number">16</span><span class="token punctuation">)</span>
+		<span class="token punctuation">.</span><span class="token function">map_err</span><span class="token punctuation">(</span><span class="token closure-params"><span class="token closure-punctuation punctuation">|</span>_<span class="token closure-punctuation punctuation">|</span></span> <span class="token string">"Invalid hex color code"</span><span class="token punctuation">)</span><span class="token operator">?</span><span class="token punctuation">;</span>
+	<span class="token keyword">let</span> b <span class="token operator">=</span> <span class="token keyword">u8</span><span class="token punctuation">::</span><span class="token function">from_str_radix</span><span class="token punctuation">(</span><span class="token operator">&amp;</span>hex<span class="token punctuation">[</span><span class="token number">4</span><span class="token punctuation">..</span><span class="token number">6</span><span class="token punctuation">]</span><span class="token punctuation">,</span> <span class="token number">16</span><span class="token punctuation">)</span>
+		<span class="token punctuation">.</span><span class="token function">map_err</span><span class="token punctuation">(</span><span class="token closure-params"><span class="token closure-punctuation punctuation">|</span>_<span class="token closure-punctuation punctuation">|</span></span> <span class="token string">"Invalid hex color code"</span><span class="token punctuation">)</span><span class="token operator">?</span><span class="token punctuation">;</span>
+	
+	<span class="token class-name">Ok</span><span class="token punctuation">(</span><span class="token class-name">Srgb</span><span class="token punctuation">::</span><span class="token function">new</span><span class="token punctuation">(</span>
+		r <span class="token keyword">as</span> <span class="token keyword">f32</span> <span class="token operator">/</span> <span class="token number">255.0</span><span class="token punctuation">,</span>
+		g <span class="token keyword">as</span> <span class="token keyword">f32</span> <span class="token operator">/</span> <span class="token number">255.0</span><span class="token punctuation">,</span>
+		b <span class="token keyword">as</span> <span class="token keyword">f32</span> <span class="token operator">/</span> <span class="token number">255.0</span><span class="token punctuation">,</span>
+	<span class="token punctuation">)</span><span class="token punctuation">)</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">fn</span> <span class="token function-definition function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">-&gt;</span> <span class="token class-name">Result</span><span class="token operator">&lt;</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token class-name">ImageError</span><span class="token operator">&gt;</span> <span class="token punctuation">{</span>
+	<span class="token keyword">let</span> img <span class="token operator">=</span> <span class="token class-name">Reader</span><span class="token punctuation">::</span><span class="token function">open</span><span class="token punctuation">(</span><span class="token constant">IMAGE_PATH</span><span class="token punctuation">)</span><span class="token operator">?</span><span class="token punctuation">.</span><span class="token function">decode</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">?</span><span class="token punctuation">;</span>
+	<span class="token keyword">let</span> pixels <span class="token operator">=</span> img<span class="token punctuation">.</span><span class="token function">as_rgba8</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">unwrap</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">enumerate_pixels</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+	<span class="token keyword">let</span> <span class="token keyword">mut</span> output_buffer <span class="token operator">=</span> <span class="token class-name">ImageBuffer</span><span class="token punctuation">::</span><span class="token function">new</span><span class="token punctuation">(</span>img<span class="token punctuation">.</span><span class="token function">width</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span> img<span class="token punctuation">.</span><span class="token function">height</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+	<span class="token keyword">let</span> palette_rgb <span class="token operator">=</span> <span class="token function">palette_as_rgb</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+	
+	<span class="token keyword">for</span> pixel <span class="token keyword">in</span> pixels <span class="token punctuation">{</span>
+		<span class="token comment">// is it witchcraft time yet?</span>
+	<span class="token punctuation">}</span>
+	output_buffer<span class="token punctuation">.</span><span class="token function">save</span><span class="token punctuation">(</span><span class="token string">"img/output.png"</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">unwrap</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+	<span class="token class-name">Ok</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+<span class="token punctuation">}</span>
+</code><button class="copy-code-button">Copy</button></pre>
+          </div>
+          <div>
+            <h2 data-heading="Finding the Closest Palette Color" id="Finding_the_Closest_Palette_Color" style="display: flex;">
+              <div class="heading-collapse-indicator collapse-indicator collapse-icon"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="svg-icon right-triangle">
+                  <path d="M3 8L12 17L21 8"></path>
+                </svg></div>Finding the Closest Palette Color
+            </h2>
+          </div>
+          <div>
+            <p>We're going to run a calculation on each pixel to help us figure out which color from our palette is the closest match. The easiest way to do this is to imagine our RGB color values as a 3D points, and then compare the distances between those points.</p>
+          </div>
+          <div>
+            <p><span alt="cartesian_colors_rgb.mkv" src="cartesian_colors_rgb.mkv" class="internal-embed media-embed video-embed is-loaded"><video controls="" src="lib\media\cartesian_colors_rgb.mkv" style=""></video></span></p>
+          </div>
+          <div>
+            <p>Whichever point is closest to our original pixel's RGB gets chosen to be the new color in the output image.</p>
+          </div>
+          <div>
+            <pre class="language-rust" tabindex="0"><code class="language-rust is-loaded"><span class="token keyword">use</span> <span class="token namespace">palette<span class="token punctuation">::</span></span><span class="token punctuation">{</span><span class="token class-name">Srgb</span><span class="token punctuation">,</span> <span class="token namespace">color_difference<span class="token punctuation">::</span></span><span class="token class-name">EuclideanDistance</span><span class="token punctuation">}</span><span class="token punctuation">;</span>
+
+<span class="token keyword">fn</span> <span class="token function-definition function">find_closest</span><span class="token punctuation">(</span>palette<span class="token punctuation">:</span> <span class="token operator">&amp;</span><span class="token class-name">Vec</span><span class="token operator">&lt;</span><span class="token class-name">Srgb</span><span class="token operator">&gt;</span><span class="token punctuation">,</span> color<span class="token punctuation">:</span> <span class="token class-name">Srgb</span><span class="token punctuation">)</span> <span class="token punctuation">-&gt;</span> <span class="token class-name">Srgb</span> <span class="token punctuation">{</span>
+	<span class="token keyword">let</span> <span class="token keyword">mut</span> dist_of_closest <span class="token operator">=</span> <span class="token namespace">std<span class="token punctuation">::</span></span><span class="token keyword">f32</span><span class="token punctuation">::</span><span class="token constant">MAX</span><span class="token punctuation">;</span>
+	<span class="token keyword">let</span> <span class="token keyword">mut</span> closest <span class="token operator">=</span> <span class="token class-name">Srgb</span><span class="token punctuation">::</span><span class="token function">new</span><span class="token punctuation">(</span><span class="token number">0.0</span><span class="token punctuation">,</span> <span class="token number">0.0</span><span class="token punctuation">,</span> <span class="token number">0.0</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+	
+	<span class="token keyword">for</span> palette_color <span class="token keyword">in</span> palette <span class="token punctuation">{</span>
+		<span class="token keyword">let</span> d <span class="token operator">=</span> color<span class="token punctuation">.</span><span class="token function">distance_squared</span><span class="token punctuation">(</span><span class="token operator">*</span>palette_color<span class="token punctuation">)</span><span class="token punctuation">;</span>
+		<span class="token keyword">if</span> d <span class="token operator">&lt;</span> dist_of_closest <span class="token punctuation">{</span>
+			dist_of_closest <span class="token operator">=</span> d<span class="token punctuation">;</span>
+			closest <span class="token operator">=</span> <span class="token operator">*</span>palette_color
+		<span class="token punctuation">}</span>
+	<span class="token punctuation">}</span>
+	closest
+<span class="token punctuation">}</span>
+</code><button class="copy-code-button">Copy</button></pre>
+          </div>
+          <div>
+            <p>Okay, now let's plug it into <code>main()</code> and see what kind of an output we get!</p>
+          </div>
+          <div>
+            <pre class="language-rust" tabindex="0"><code class="language-rust is-loaded">
+<span class="token keyword">fn</span> <span class="token function-definition function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">-&gt;</span> <span class="token class-name">Result</span><span class="token operator">&lt;</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token class-name">ImageError</span><span class="token operator">&gt;</span> <span class="token punctuation">{</span>
+<span class="token comment">// --snip--</span>
+	<span class="token keyword">for</span> pixel <span class="token keyword">in</span> pixels <span class="token punctuation">{</span>
+		<span class="token keyword">let</span> <span class="token punctuation">(</span>x<span class="token punctuation">,</span> y<span class="token punctuation">)</span> <span class="token operator">=</span> <span class="token punctuation">(</span>pixel<span class="token number">.0</span><span class="token punctuation">,</span> pixel<span class="token number">.1</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+		<span class="token keyword">let</span> <span class="token punctuation">[</span>r<span class="token punctuation">,</span> g<span class="token punctuation">,</span> b<span class="token punctuation">,</span> a<span class="token punctuation">]</span> <span class="token operator">=</span> pixel<span class="token number">.2</span><span class="token punctuation">.</span><span class="token number">0</span><span class="token punctuation">;</span>
+		<span class="token keyword">let</span> pixel_rgb <span class="token operator">=</span> <span class="token class-name">Srgb</span><span class="token punctuation">::</span><span class="token function">new</span><span class="token punctuation">(</span>
+			r <span class="token keyword">as</span> <span class="token keyword">f32</span> <span class="token operator">/</span> <span class="token number">255.0</span><span class="token punctuation">,</span>
+			g <span class="token keyword">as</span> <span class="token keyword">f32</span> <span class="token operator">/</span> <span class="token number">255.0</span><span class="token punctuation">,</span>
+			b <span class="token keyword">as</span> <span class="token keyword">f32</span> <span class="token operator">/</span> <span class="token number">255.0</span>
+		<span class="token punctuation">)</span><span class="token punctuation">;</span>
+		<span class="token comment">// find the closest color in the palette to the pixel at (x, y)</span>
+		<span class="token keyword">let</span> closest <span class="token operator">=</span> <span class="token function">find_closest</span><span class="token punctuation">(</span><span class="token operator">&amp;</span>palette_rgb<span class="token punctuation">,</span> pixel_rgb<span class="token punctuation">)</span><span class="token punctuation">;</span>
+		<span class="token comment">// output the new color to the buffer</span>
+		<span class="token keyword">let</span> output_pixel <span class="token operator">=</span> output_buffer<span class="token punctuation">.</span><span class="token function">get_pixel_mut</span><span class="token punctuation">(</span>x<span class="token punctuation">,</span> y<span class="token punctuation">)</span><span class="token punctuation">;</span>
+		
+		<span class="token operator">*</span>output_pixel <span class="token operator">=</span> <span class="token namespace">image<span class="token punctuation">::</span></span><span class="token class-name">Rgba</span><span class="token punctuation">(</span><span class="token punctuation">[</span>
+			<span class="token punctuation">(</span>closest<span class="token punctuation">.</span>red <span class="token operator">*</span> <span class="token number">255.0</span><span class="token punctuation">)</span> <span class="token keyword">as</span> <span class="token keyword">u8</span><span class="token punctuation">,</span>
+			<span class="token punctuation">(</span>closest<span class="token punctuation">.</span>green <span class="token operator">*</span> <span class="token number">255.0</span><span class="token punctuation">)</span> <span class="token keyword">as</span> <span class="token keyword">u8</span><span class="token punctuation">,</span>
+			<span class="token punctuation">(</span>closest<span class="token punctuation">.</span>blue <span class="token operator">*</span> <span class="token number">255.0</span><span class="token punctuation">)</span> <span class="token keyword">as</span> <span class="token keyword">u8</span><span class="token punctuation">,</span>
+			a<span class="token punctuation">,</span>
+		<span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+	<span class="token comment">// save as an image</span>
+	output_buffer<span class="token punctuation">.</span><span class="token function">save</span><span class="token punctuation">(</span><span class="token string">"img/output.png"</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">unwrap</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+	<span class="token class-name">Ok</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+<span class="token punctuation">}</span>
+</code><button class="copy-code-button">Copy</button></pre>
+          </div>
+          <div>
+            <div data-callout-metadata="" data-callout-fold="+" data-callout="success" class="callout is-collapsible">
+              <div class="callout-title">
+                <div class="callout-icon"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="svg-icon lucide-check">
+                    <polyline points="20 6 9 17 4 12"></polyline>
+                  </svg></div>
+                <div class="callout-title-inner">Output</div>
+                <div class="callout-fold"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="svg-icon lucide-chevron-down">
+                    <polyline points="6 9 12 15 18 9"></polyline>
+                  </svg></div>
+              </div>
+              <div class="callout-content">
+                <p><span alt="output1-rgb-no-dither.png" src="output1-rgb-no-dither.png" class="internal-embed media-embed image-embed is-loaded"><img alt="output1-rgb-no-dither.png" src="lib\media\output1-rgb-no-dither.png"></span></p>
+              </div>
+            </div>
+          </div>
+          <div>
+            <p>Sweet, it works!</p>
+          </div>
+          <div>
+            <div data-callout-metadata="" data-callout-fold="-" data-callout="info" class="callout is-collapsible is-collapsed">
+              <div class="callout-title">
+                <div class="callout-icon"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="svg-icon lucide-info">
+                    <circle cx="12" cy="12" r="10"></circle>
+                    <line x1="12" y1="16" x2="12" y2="12"></line>
+                    <line x1="12" y1="8" x2="12.01" y2="8"></line>
+                  </svg></div>
+                <div class="callout-title-inner">Compared to...</div>
+                <div class="callout-fold is-collapsed"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="svg-icon lucide-chevron-down">
+                    <polyline points="6 9 12 15 18 9"></polyline>
+                  </svg></div>
+              </div>
+              <div class="callout-content" style="display: none;">
+                <p><span alt="demo1.png" src="demo1.png" class="internal-embed media-embed image-embed is-loaded"><img alt="demo1.png" src="lib\media\demo1.png"></span></p>
+              </div>
+            </div>
+          </div>
+          <div>
+            <h1 data-heading="Better Color Matches with the Oklab Color Space" id="Better_Color_Matches_with_the_Oklab_Color_Space">Better Color Matches with the Oklab Color Space</h1>
+          </div>
+          <div>
+            <p>Before we get going on dithering, I want to try using <a data-tooltip-position="top" aria-label="https://bottosson.github.io/posts/oklab/" rel="noopener" class="external-link" href="https://bottosson.github.io/posts/oklab/" target="_blank">another color space</a> to see if we can get more accurate palette mapping. The image above seems alright, but there are a few things with it that bug me. Notice the darker strand on the highlight on the cone? Also, what's up with the super vibrant reds on the ring? These issues stem from the fact that we're using the RGB Color space.</p>
+          </div>
+          <div>
+            <h2 data-heading="What's Wrong with RGB?" id="What's_Wrong_with_RGB?" style="display: flex;">
+              <div class="heading-collapse-indicator collapse-indicator collapse-icon"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="svg-icon right-triangle">
+                  <path d="M3 8L12 17L21 8"></path>
+                </svg></div>What's Wrong with RGB?
+            </h2>
+          </div>
+          <div>
+            <p>As far as digital color models go, RGB is one of the most straight-forward. It's an additive color model, meaning its components more or less describe how much <mark style="background: #5c3f4f;">red</mark>, <mark style="background: #48584E;">green</mark>, and <mark style="background: #3F5865;">blue</mark> light needs to be added together to create a given color. For most use cases, it's totally fine.</p>
+          </div>
+          <div>
+            <p>The problem with it in <em>this</em> use case is the lack of perceptual uniformity.</p>
+          </div>
+          <div>
+            <p>Here's an example. Look at the difference between "true blue" and "true green" below.</p>
+          </div>
+          <div>
+            <blockquote>
+              <p><strong>Blue</strong><br>
+                <code>rgb(0, 0, 255)</code>: <mark style="background: #0000ff; color: #0000ff">Nice.</mark><br>
+                <strong>Green</strong><br>
+                <code>rgb(0, 255, 0)</code>: <mark style="background: #00ff00; color: #00ff00">Nice.</mark>
+              </p>
+            </blockquote>
+          </div>
+          <div>
+            <p>To the human eye, green is far brighter than blue. Yet numerically, both are equally far away from black.</p>
+          </div>
+          <div>
+            <blockquote>
+              <p><strong>Black</strong><br>
+                <code>rgb(0, 0, 0)</code>: <mark style="background: #000000; color: #000000">Nice.</mark>
+              </p>
+            </blockquote>
+          </div>
+          <div>
+            <p><strong>The RGB color space doesn't account for the inherent lightness or darkness of colors.</strong> If we want our <code>find_closest()</code> function to return the color from our palette that really is the perceptually closest match to the reference color, we'll need to use a different color space.</p>
+          </div>
+          <div>
+            <h2 data-heading="Introducing Oklab" id="Introducing_Oklab" style="display: flex;">
+              <div class="heading-collapse-indicator collapse-indicator collapse-icon"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="svg-icon right-triangle">
+                  <path d="M3 8L12 17L21 8"></path>
+                </svg></div>Introducing Oklab
+            </h2>
+          </div>
+          <div>
+            <p>Actually, I'll let Björn introduce it himself, since he made the thing.</p>
+          </div>
+          <div>
+            <div data-callout-metadata="" data-callout-fold="" data-callout="quote" class="callout">
+              <div class="callout-title">
+                <div class="callout-icon"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="svg-icon lucide-quote">
+                    <path d="M3 21c3 0 7-1 7-8V5c0-1.25-.756-2.017-2-2H4c-1.25 0-2 .75-2 1.972V11c0 1.25.75 2 2 2 1 0 1 0 1 1v1c0 1-1 2-2 2s-1 .008-1 1.031V20c0 1 0 1 1 1z"></path>
+                    <path d="M15 21c3 0 7-1 7-8V5c0-1.25-.757-2.017-2-2h-4c-1.25 0-2 .75-2 1.972V11c0 1.25.75 2 2 2h.75c0 2.25.25 4-2.75 4v3c0 1 0 1 1 1z"></path>
+                  </svg></div>
+                <div class="callout-title-inner">Björn Ottosson</div>
+              </div>
+              <div class="callout-content">
+                <p>A color in Oklab is represented with three coordinates, similar to how&nbsp;<a data-tooltip-position="top" aria-label="https://en.wikipedia.org/wiki/CIELAB_color_space" rel="noopener" class="external-link" href="https://en.wikipedia.org/wiki/CIELAB_color_space" target="_blank">CIELAB</a>&nbsp;works, but with better perceptual properties. Oklab uses a D65 whitepoint, since this is what sRGB and other common color spaces use. The three coordinates are:</p>
+                <ul class="has-list-bullet">
+                  <li data-line="2">
+                    <div class="list-bullet"></div><strong>L</strong>&nbsp;– perceived lightness
+                  </li>
+                  <li data-line="3">
+                    <div class="list-bullet"></div><strong>a</strong>&nbsp;– how green/red the color is
+                  </li>
+                  <li data-line="4">
+                    <div class="list-bullet"></div><strong>b</strong>&nbsp;– how blue/yellow the color is
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+          <div>
+            <p>Of course there's a lot more to it than that (in fact he goes through just about all of it on his <a data-tooltip-position="top" aria-label="https://bottosson.github.io/posts/oklab/" rel="noopener" class="external-link" href="https://bottosson.github.io/posts/oklab/" target="_blank">blog post</a>) but the point is these three coordinates form a color model that is far more perceptually uniform than RGB. We can still treat the <code>L</code>, <code>a</code>, and <code>b</code> components the same way we did previously to imagine 3d points, expect now the distance between those points more closely resemble their perceptual distance.</p>
+          </div>
+          <div>
+            <p><a data-href="Faux Pixel Art with Blender, Rust, Fancy Color Spaces and 'Borrowed' Algorithms" href="all-published/miscellaneous-tech/faux-pixel-art-with-blender,-rust,-fancy-color-spaces-and-'borrowed'-algorithms.html" class="internal-link" target="_self" rel="noopener">Faux Pixel Art with Blender, Rust, Fancy Color Spaces and 'Borrowed' Algorithms</a></p>
+          </div>
+          <div>
+            <p>Here's another example to illustrate this idea of perceptual uniformity. In HSV (Hue/Saturation/Value, a color space built on top of RGB) the <code>V</code> is <em>supposed</em> to represent how bright or dark a color is, but it doesn't do a great job. If you were to lock <code>V</code> and spin the hue to create a rainbow, here's what you'd get: </p>
+          </div>
+          <div>
+            <p><img alt="bad rainbow" src="https://bottosson.github.io/img/oklab/hue_hsv.png" referrerpolicy="no-referrer"><br>
+              Compare that to gigachad Oklab, when you lock <code>L</code> and manipulate<sup data-footnote-id="fnref-1-e3516f0ea370509b" class="footnote-ref" id="fnref-1-e3516f0ea370509b"><a href="#fn-1-e3516f0ea370509b" class="footnote-link" target="_self" rel="noopener">[1]</a></sup> <code>a</code> and <code>b</code> to create a rainbow, here's what we get.<br>
+              <img alt="good rainbow" src="https://bottosson.github.io/img/oklab/hue_oklab.png" referrerpolicy="no-referrer">
+            </p>
+          </div>
+          <div>
+            <p>It's a bit less intuitive of a color model to use, but I think the results speak for themselves.</p>
+          </div>
+          <div>
+            <h2 data-heading="Okay We Get it, Just Program the Thing Already" id="Okay_We_Get_it,_Just_Program_the_Thing_Already" style="display: flex;">
+              <div class="heading-collapse-indicator collapse-indicator collapse-icon"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="svg-icon right-triangle">
+                  <path d="M3 8L12 17L21 8"></path>
+                </svg></div>Okay We Get it, Just Program the Thing Already
+            </h2>
+          </div>
+          <div>
+            <p>Alright, alright. First, let's update <code>palette_as_rgb()</code> to give us our color palette in the OkLab color space.</p>
+          </div>
+          <div>
+            <pre class="language-rust" tabindex="0"><code class="language-rust is-loaded"><span class="token keyword">use</span> <span class="token namespace">palette<span class="token punctuation">::</span></span><span class="token punctuation">{</span><span class="token namespace">color_difference<span class="token punctuation">::</span></span><span class="token class-name">EuclideanDistance</span><span class="token punctuation">,</span> <span class="token class-name">IntoColor</span><span class="token punctuation">,</span> <span class="token class-name">Srgb</span><span class="token punctuation">,</span> <span class="token class-name">Oklab</span><span class="token punctuation">}</span><span class="token punctuation">;</span>
+
+<span class="token keyword">fn</span> <span class="token function-definition function">palette_as_oklab</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">-&gt;</span> <span class="token class-name">Vec</span><span class="token operator">&lt;</span><span class="token class-name">Oklab</span><span class="token operator">&gt;</span> <span class="token punctuation">{</span>
+    <span class="token keyword">let</span> <span class="token keyword">mut</span> oklab_palette<span class="token punctuation">:</span> <span class="token class-name">Vec</span><span class="token operator">&lt;</span><span class="token class-name">Oklab</span><span class="token operator">&gt;</span> <span class="token operator">=</span> <span class="token macro property">vec!</span><span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+    <span class="token keyword">for</span> hex <span class="token keyword">in</span> <span class="token constant">PALETTE_HEX</span> <span class="token punctuation">{</span>
+        <span class="token keyword">let</span> rgb <span class="token operator">=</span> <span class="token function">hex_to_rgb</span><span class="token punctuation">(</span>hex<span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">unwrap</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        oklab_palette<span class="token punctuation">.</span><span class="token function">push</span><span class="token punctuation">(</span>rgb<span class="token punctuation">.</span><span class="token function">into_color</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+    oklab_palette
+<span class="token punctuation">}</span>
+</code><button class="copy-code-button">Copy</button></pre>
+          </div>
+          <div>
+            <p><code>find_closest()</code> needs to know we're working with a different color space now, so let's update that.</p>
+          </div>
+          <div>
+            <pre class="language-rust" tabindex="0"><code class="language-rust is-loaded"><span class="token keyword">fn</span> <span class="token function-definition function">find_closest</span><span class="token punctuation">(</span>palette<span class="token punctuation">:</span> <span class="token operator">&amp;</span><span class="token class-name">Vec</span><span class="token operator">&lt;</span><span class="token class-name">Oklab</span><span class="token operator">&gt;</span><span class="token punctuation">,</span> color<span class="token punctuation">:</span> <span class="token class-name">Oklab</span><span class="token punctuation">)</span> <span class="token punctuation">-&gt;</span> <span class="token class-name">Oklab</span> <span class="token punctuation">{</span>
+	<span class="token keyword">let</span> <span class="token keyword">mut</span> dist_of_closest <span class="token operator">=</span> <span class="token namespace">std<span class="token punctuation">::</span></span><span class="token keyword">f32</span><span class="token punctuation">::</span><span class="token constant">MAX</span><span class="token punctuation">;</span>
+	<span class="token keyword">let</span> <span class="token keyword">mut</span> closest <span class="token operator">=</span> <span class="token class-name">Oklab</span><span class="token punctuation">::</span><span class="token function">new</span><span class="token punctuation">(</span><span class="token number">0.0</span><span class="token punctuation">,</span> <span class="token number">0.0</span><span class="token punctuation">,</span> <span class="token number">0.0</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+	
+	<span class="token keyword">for</span> palette_color <span class="token keyword">in</span> palette <span class="token punctuation">{</span>
+		<span class="token keyword">let</span> d <span class="token operator">=</span> color<span class="token punctuation">.</span><span class="token function">distance_squared</span><span class="token punctuation">(</span><span class="token operator">*</span>palette_color<span class="token punctuation">)</span><span class="token punctuation">;</span>
+		<span class="token keyword">if</span> d <span class="token operator">&lt;</span> dist_of_closest <span class="token punctuation">{</span>
+			dist_of_closest <span class="token operator">=</span> d<span class="token punctuation">;</span>
+			closest <span class="token operator">=</span> <span class="token operator">*</span>palette_color
+		<span class="token punctuation">}</span>
+	<span class="token punctuation">}</span>
+	closest
+<span class="token punctuation">}</span>
+</code><button class="copy-code-button">Copy</button></pre>
+          </div>
+          <div>
+            <p>And then <code>main()</code> needs some tweaks to read get our pixel values in that color space too.</p>
+          </div>
+          <div>
+            <pre class="language-rust" tabindex="0"><code class="language-rust is-loaded"><span class="token keyword">fn</span> <span class="token function-definition function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">-&gt;</span> <span class="token class-name">Result</span><span class="token operator">&lt;</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token class-name">ImageError</span><span class="token operator">&gt;</span> <span class="token punctuation">{</span>
+	<span class="token comment">// --snip--</span>
+	<span class="token keyword">let</span> palette_rgb <span class="token operator">=</span> <span class="token function">palette_as_oklab</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+	<span class="token keyword">for</span> pixel <span class="token keyword">in</span> pixels <span class="token punctuation">{</span>
+		<span class="token keyword">let</span> <span class="token punctuation">(</span>x<span class="token punctuation">,</span> y<span class="token punctuation">)</span> <span class="token operator">=</span> <span class="token punctuation">(</span>pixel<span class="token number">.0</span><span class="token punctuation">,</span> pixel<span class="token number">.1</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+		<span class="token keyword">let</span> <span class="token punctuation">[</span>r<span class="token punctuation">,</span> g<span class="token punctuation">,</span> b<span class="token punctuation">,</span> a<span class="token punctuation">]</span> <span class="token operator">=</span> pixel<span class="token number">.2</span> <span class="token punctuation">.</span><span class="token number">0</span><span class="token punctuation">;</span>
+		
+		<span class="token keyword">let</span> pixel_rgb <span class="token operator">=</span> <span class="token class-name">Srgb</span><span class="token punctuation">::</span><span class="token function">new</span><span class="token punctuation">(</span>
+			r <span class="token keyword">as</span> <span class="token keyword">f32</span> <span class="token operator">/</span> <span class="token number">255.0</span><span class="token punctuation">,</span>
+			g <span class="token keyword">as</span> <span class="token keyword">f32</span> <span class="token operator">/</span> <span class="token number">255.0</span><span class="token punctuation">,</span>
+			b <span class="token keyword">as</span> <span class="token keyword">f32</span> <span class="token operator">/</span> <span class="token number">255.0</span>
+		<span class="token punctuation">)</span><span class="token punctuation">;</span>
+		<span class="token keyword">let</span> pixel_oklab<span class="token punctuation">:</span> <span class="token class-name">Oklab</span> <span class="token operator">=</span> pixel_rgb<span class="token punctuation">.</span><span class="token function">into_color</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+		<span class="token keyword">let</span> closest_oklab <span class="token operator">=</span> <span class="token function">find_closest</span><span class="token punctuation">(</span><span class="token operator">&amp;</span>palette_oklab<span class="token punctuation">,</span> pixel_oklab<span class="token punctuation">)</span><span class="token punctuation">;</span>
+		<span class="token keyword">let</span> closest_rgb<span class="token punctuation">:</span> <span class="token class-name">Srgb</span> <span class="token operator">=</span> closest_oklab<span class="token punctuation">.</span><span class="token function">into_color</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+		
+		<span class="token keyword">let</span> output_pixel <span class="token operator">=</span> output_buffer<span class="token punctuation">.</span><span class="token function">get_pixel_mut</span><span class="token punctuation">(</span>x<span class="token punctuation">,</span> y<span class="token punctuation">)</span><span class="token punctuation">;</span>
+		<span class="token operator">*</span>output_pixel <span class="token operator">=</span> <span class="token namespace">image<span class="token punctuation">::</span></span><span class="token class-name">Rgba</span><span class="token punctuation">(</span><span class="token punctuation">[</span>
+			<span class="token punctuation">(</span>closest_rgb<span class="token punctuation">.</span>red <span class="token operator">*</span> <span class="token number">255.0</span><span class="token punctuation">)</span> <span class="token keyword">as</span> <span class="token keyword">u8</span><span class="token punctuation">,</span>
+			<span class="token punctuation">(</span>closest_rgb<span class="token punctuation">.</span>green <span class="token operator">*</span> <span class="token number">255.0</span><span class="token punctuation">)</span> <span class="token keyword">as</span> <span class="token keyword">u8</span><span class="token punctuation">,</span>
+			<span class="token punctuation">(</span>closest_rgb<span class="token punctuation">.</span>blue <span class="token operator">*</span> <span class="token number">255.0</span><span class="token punctuation">)</span> <span class="token keyword">as</span> <span class="token keyword">u8</span><span class="token punctuation">,</span>
+			a<span class="token punctuation">,</span>
+		<span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+	<span class="token punctuation">}</span>
+	<span class="token comment">// --snip--</span>
+<span class="token punctuation">}</span>
+</code><button class="copy-code-button">Copy</button></pre>
+          </div>
+          <div>
+            <p>Okay, let's see what we get now.</p>
+          </div>
+          <div>
+            <div data-callout-metadata="" data-callout-fold="+" data-callout="success" class="callout is-collapsible">
+              <div class="callout-title">
+                <div class="callout-icon"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="svg-icon lucide-check">
+                    <polyline points="20 6 9 17 4 12"></polyline>
+                  </svg></div>
+                <div class="callout-title-inner">Output (Oklab)</div>
+                <div class="callout-fold"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="svg-icon lucide-chevron-down">
+                    <polyline points="6 9 12 15 18 9"></polyline>
+                  </svg></div>
+              </div>
+              <div class="callout-content">
+                <p><span alt="output2_oklab_no_dither.png" src="output2_oklab_no_dither.png" class="internal-embed media-embed image-embed is-loaded"><img alt="output2_oklab_no_dither.png" src="lib\media\output2_oklab_no_dither.png"></span></p>
+              </div>
+            </div>
+          </div>
+          <div>
+            <div data-callout-metadata="" data-callout-fold="-" data-callout="failure" class="callout is-collapsible is-collapsed">
+              <div class="callout-title">
+                <div class="callout-icon"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="svg-icon lucide-x">
+                    <line x1="18" y1="6" x2="6" y2="18"></line>
+                    <line x1="6" y1="6" x2="18" y2="18"></line>
+                  </svg></div>
+                <div class="callout-title-inner">Old Output (RGB)</div>
+                <div class="callout-fold is-collapsed"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="svg-icon lucide-chevron-down">
+                    <polyline points="6 9 12 15 18 9"></polyline>
+                  </svg></div>
+              </div>
+              <div class="callout-content" style="display: none;">
+                <p><span alt="output1-rgb-no-dither.png" src="output1-rgb-no-dither.png" class="internal-embed media-embed image-embed is-loaded"><img alt="output1-rgb-no-dither.png" src="lib\media\output1-rgb-no-dither.png"></span></p>
+              </div>
+            </div>
+          </div>
+          <div>
+            <div data-callout-metadata="" data-callout-fold="-" data-callout="info" class="callout is-collapsible is-collapsed">
+              <div class="callout-title">
+                <div class="callout-icon"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="svg-icon lucide-info">
+                    <circle cx="12" cy="12" r="10"></circle>
+                    <line x1="12" y1="16" x2="12" y2="12"></line>
+                    <line x1="12" y1="8" x2="12.01" y2="8"></line>
+                  </svg></div>
+                <div class="callout-title-inner">Original</div>
+                <div class="callout-fold is-collapsed"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="svg-icon lucide-chevron-down">
+                    <polyline points="6 9 12 15 18 9"></polyline>
+                  </svg></div>
+              </div>
+              <div class="callout-content" style="display: none;">
+                <p><span alt="demo1.png" src="demo1.png" class="internal-embed media-embed image-embed is-loaded"><img alt="demo1.png" src="lib\media\demo1.png"></span></p>
+              </div>
+            </div>
+          </div>
+          <div>
+            <p>I'm biased, but I think that matches the original much better than the RGB-based solution. It's not perfect, but <em>a lot</em> better.</p>
+          </div>
+          <div>
+            <p>Those out-of-place vibrant red shades on the ring that I mentioned earlier are gone, and the highlights on the cone look much better. There was also a deep purple hue that snuck its way into the shadow of the monkey on the old output that's been better handled here. The shadows on the monkey look a bit better and the brightness of the floor seems much more true to the original scene.</p>
+          </div>
+          <div>
+            <p>I think we'll see even more benefits from this color model when we introduce dithering.</p>
+          </div>
+          <div>
+            <h1 data-heading="Dithering Close Color Matches" id="Dithering_Close_Color_Matches">Dithering Close Color Matches</h1>
+          </div>
+          <div>
+            <p><a data-tooltip-position="top" aria-label="https://en.wikipedia.org/wiki/Ordered_dithering" rel="noopener" class="external-link" href="https://en.wikipedia.org/wiki/Ordered_dithering" target="_blank">Dithering</a> lets us smoothly transition between two colors without stepping outside the bounds of a color palette. It's a technique that's been used historically for pixel art and can add a lot of character to a design when used right.<br>
+              <img alt="dithering example" src="https://upload.wikimedia.org/wikipedia/commons/e/e5/Ordered_4x4_Bayer_matrix_dithering.png" referrerpolicy="no-referrer">
+            </p>
+          </div>
+          <div>
+            <p>This is particularly useful for us because sometimes the pixel we're reading falls pretty evenly between two colors in our palette. To get even better results, we can checkerboard pattern between the two colors.</p>
+          </div>
+          <div>
+            <p>I spent a long time trying to make this work on my own and found out that dithering is a lot more complicated than I thought. Eventually I stumbled across <a data-tooltip-position="top" aria-label="https://bisqwit.iki.fi/story/howto/dither/jy/" rel="noopener" class="external-link" href="https://bisqwit.iki.fi/story/howto/dither/jy/" target="_blank">this fantastic post</a> by Joel Yliluoma that dives deep into the problem and introduced me to a patented algorithm called Pattern Dithering.</p>
+          </div>
+          <div>
+            <p>That patent has since expired, so uh...<br>
+              <em>yoink</em>
+            </p>
+          </div>
+          <div>
+            <p>This implementation departs a little bit from the patented technique, so let me break down what all happens before I dump a wall of code in front of you.</p>
+          </div>
+          <div>
+            <ol>
+              <li data-line="0">First, we create an <span class="math math-inline is-loaded"><mjx-container class="MathJax" jax="CHTML"><mjx-math class="MJX-TEX"><mjx-mi class="mjx-i"><mjx-c class="mjx-c1D45B TEX-I"></mjx-c></mjx-mi><mjx-mo class="mjx-n" space="3"><mjx-c class="mjx-cD7"></mjx-c></mjx-mo><mjx-mi class="mjx-i" space="3"><mjx-c class="mjx-c1D45B TEX-I"></mjx-c></mjx-mi></mjx-math></mjx-container></span> <a data-tooltip-position="top" aria-label="https://en.wikipedia.org/wiki/Ordered_dithering#Threshold_map" rel="noopener" class="external-link" href="https://en.wikipedia.org/wiki/Ordered_dithering#Threshold_map" target="_blank">Bayer Matrix</a> which serves as our threshold map. Later, we'll create a list of candidates that can be our final pixel color. This map helps us know which one candidate to use, depending on the <code>(x, y)</code> location of the pixel.<br>
+                Higher resolution threshold maps will yield more dithering patterns and therefore smoother transitions, but increase the computation time. I personally think the <span class="math math-inline is-loaded"><mjx-container class="MathJax" jax="CHTML"><mjx-math class="MJX-TEX"><mjx-texatom texclass="ORD"><mjx-mn class="mjx-n"><mjx-c class="mjx-c32"></mjx-c></mjx-mn></mjx-texatom><mjx-mo class="mjx-n" space="3"><mjx-c class="mjx-cD7"></mjx-c></mjx-mo><mjx-texatom space="3" texclass="ORD"><mjx-mn class="mjx-n"><mjx-c class="mjx-c32"></mjx-c></mjx-mn></mjx-texatom></mjx-math></mjx-container></span> gives the best looking results for this application, but there's no reason you couldn't do <span class="math math-inline is-loaded"><mjx-container class="MathJax" jax="CHTML"><mjx-math class="MJX-TEX"><mjx-texatom texclass="ORD"><mjx-mn class="mjx-n"><mjx-c class="mjx-c34"></mjx-c></mjx-mn></mjx-texatom><mjx-mo class="mjx-n" space="3"><mjx-c class="mjx-cD7"></mjx-c></mjx-mo><mjx-texatom space="3" texclass="ORD"><mjx-mn class="mjx-n"><mjx-c class="mjx-c34"></mjx-c></mjx-mn></mjx-texatom></mjx-math></mjx-container></span> or higher.</li>
+            </ol>
+          </div>
+          <div>
+            <pre class="language-rust" tabindex="0"><code class="language-rust is-loaded"><span class="token keyword">const</span> <span class="token constant">THRESHOLD_MAP</span><span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token punctuation">[</span><span class="token keyword">usize</span><span class="token punctuation">;</span> <span class="token number">2</span><span class="token punctuation">]</span><span class="token punctuation">;</span> <span class="token number">2</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">]</span><span class="token punctuation">,</span> <span class="token punctuation">[</span><span class="token number">3</span><span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+</code><button class="copy-code-button">Copy</button></pre>
+          </div>
+          <div>
+            <ol start="2">
+              <li data-line="0">Next, we need to create an <span class="math math-inline is-loaded"><mjx-container class="MathJax" jax="CHTML"><mjx-math class="MJX-TEX"><mjx-msup><mjx-mi class="mjx-i"><mjx-c class="mjx-c1D45B TEX-I"></mjx-c></mjx-mi><mjx-script style="vertical-align: 0.363em;"><mjx-texatom size="s" texclass="ORD"><mjx-mn class="mjx-n"><mjx-c class="mjx-c32"></mjx-c></mjx-mn></mjx-texatom></mjx-script></mjx-msup></mjx-math></mjx-container></span> sized list of potential candidates for our final pixel color. When finding a color candidate, we use the same <code>find_closest()</code> function as before, but on subsequent iterations we apply a little bit of an offset to that color in the direction of the original pixel color before searching for a match. This offset, or "error" is scaled down by a value of our choice. I think multiplying it by around <code>0.04</code> looks best with this color palette, but each scene is different.</li>
+              <li data-line="1">We then take that list of candidates and sort it by ascending lightness, or <code>L</code> to make sure our results are consistent.</li>
+              <li data-line="2">The final pixel color is resolved by pulling from that sorted list of candidates like so:</li>
+            </ol>
+          </div>
+          <div>
+            <pre class="language-rust" tabindex="0"><code class="language-rust is-loaded"><span class="token keyword">const</span> <span class="token constant">MAP_SIZE</span><span class="token punctuation">:</span> <span class="token keyword">usize</span> <span class="token operator">=</span> <span class="token constant">THRESHOLD_MAP</span><span class="token punctuation">.</span><span class="token function">len</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">let</span> index <span class="token operator">=</span> <span class="token constant">THRESHOLD_MAP</span><span class="token punctuation">[</span>x <span class="token operator">%</span> <span class="token constant">MAP_SIZE</span><span class="token punctuation">]</span><span class="token punctuation">[</span>y <span class="token operator">%</span> <span class="token constant">MAP_SIZE</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+<span class="token keyword">let</span> chosen_color<span class="token punctuation">:</span> <span class="token class-name">Srgb</span> <span class="token operator">=</span> candidates<span class="token punctuation">[</span>index<span class="token punctuation">]</span><span class="token punctuation">.</span><span class="token function">into_color</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code><button class="copy-code-button">Copy</button></pre>
+          </div>
+          <div>
+            <p>Put all together, here's what our new pixel iteration loop looks like.</p>
+          </div>
+          <div>
+            <pre class="language-rust" tabindex="0"><code class="language-rust is-loaded"><span class="token keyword">const</span> <span class="token constant">THRESHOLD_MAP</span><span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token punctuation">[</span><span class="token keyword">usize</span><span class="token punctuation">;</span> <span class="token number">2</span><span class="token punctuation">]</span><span class="token punctuation">;</span> <span class="token number">2</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">]</span><span class="token punctuation">,</span> <span class="token punctuation">[</span><span class="token number">3</span><span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+<span class="token keyword">const</span> <span class="token constant">MAP_SIZE</span><span class="token punctuation">:</span> <span class="token keyword">usize</span> <span class="token operator">=</span> <span class="token constant">THRESHOLD_MAP</span><span class="token punctuation">.</span><span class="token function">len</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">const</span> <span class="token constant">DITHER</span><span class="token punctuation">:</span> <span class="token keyword">f32</span> <span class="token operator">=</span> <span class="token number">0.04</span><span class="token punctuation">;</span>
+
+<span class="token keyword">for</span> pixel <span class="token keyword">in</span> pixels <span class="token punctuation">{</span>
+	<span class="token keyword">let</span> <span class="token punctuation">(</span>x<span class="token punctuation">,</span> y<span class="token punctuation">)</span> <span class="token operator">=</span> <span class="token punctuation">(</span>pixel<span class="token number">.0</span><span class="token punctuation">,</span> pixel<span class="token number">.1</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+	<span class="token keyword">let</span> <span class="token punctuation">[</span>r<span class="token punctuation">,</span> g<span class="token punctuation">,</span> b<span class="token punctuation">,</span> a<span class="token punctuation">]</span> <span class="token operator">=</span> pixel<span class="token number">.2</span> <span class="token punctuation">.</span><span class="token number">0</span><span class="token punctuation">;</span>
+	<span class="token comment">// figure out the color of the pixel we're trying to match</span>
+	<span class="token keyword">let</span> pixel_rgb <span class="token operator">=</span> <span class="token class-name">Srgb</span><span class="token punctuation">::</span><span class="token function">new</span><span class="token punctuation">(</span>r <span class="token keyword">as</span> <span class="token keyword">f32</span> <span class="token operator">/</span> <span class="token number">255.0</span><span class="token punctuation">,</span> g <span class="token keyword">as</span> <span class="token keyword">f32</span> <span class="token operator">/</span> <span class="token number">255.0</span><span class="token punctuation">,</span> b <span class="token keyword">as</span> <span class="token keyword">f32</span> <span class="token operator">/</span> <span class="token number">255.0</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+	<span class="token comment">// convert it to Oklab</span>
+	<span class="token keyword">let</span> pixel_oklab<span class="token punctuation">:</span> <span class="token class-name">Oklab</span> <span class="token operator">=</span> pixel_rgb<span class="token punctuation">.</span><span class="token function">into_color</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+	
+	<span class="token comment">// create a list of potential color candidates from our palette</span>
+	<span class="token keyword">let</span> <span class="token keyword">mut</span> candidates<span class="token punctuation">:</span> <span class="token class-name">Vec</span><span class="token operator">&lt;</span><span class="token class-name">Oklab</span><span class="token operator">&gt;</span> <span class="token operator">=</span> <span class="token macro property">vec!</span><span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+	<span class="token keyword">let</span> <span class="token keyword">mut</span> error <span class="token operator">=</span> <span class="token class-name">Oklab</span><span class="token punctuation">::</span><span class="token function">new</span><span class="token punctuation">(</span><span class="token number">0.0</span><span class="token punctuation">,</span> <span class="token number">0.0</span><span class="token punctuation">,</span> <span class="token number">0.0</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+	<span class="token keyword">for</span> _ <span class="token keyword">in</span> <span class="token number">0</span><span class="token punctuation">..</span><span class="token constant">MAP_SIZE</span><span class="token punctuation">.</span><span class="token function">pow</span><span class="token punctuation">(</span><span class="token number">2</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+		<span class="token keyword">let</span> sample <span class="token operator">=</span> pixel_oklab <span class="token operator">+</span> error <span class="token operator">*</span> <span class="token constant">DITHER</span><span class="token punctuation">;</span>
+		<span class="token keyword">let</span> candidate <span class="token operator">=</span> <span class="token function">find_closest</span><span class="token punctuation">(</span><span class="token operator">&amp;</span>palette_oklab<span class="token punctuation">,</span> sample<span class="token punctuation">)</span><span class="token punctuation">;</span>
+		candidates<span class="token punctuation">.</span><span class="token function">push</span><span class="token punctuation">(</span>candidate<span class="token punctuation">)</span><span class="token punctuation">;</span>
+		error <span class="token operator">+=</span> pixel_oklab <span class="token operator">-</span> candidate<span class="token punctuation">;</span>
+	<span class="token punctuation">}</span>
+
+	candidates<span class="token punctuation">.</span><span class="token function">sort_by</span><span class="token punctuation">(</span>
+		<span class="token closure-params"><span class="token closure-punctuation punctuation">|</span><span class="token class-name">Oklab</span> <span class="token punctuation">{</span> l<span class="token punctuation">:</span> l1<span class="token punctuation">,</span> <span class="token punctuation">..</span> <span class="token punctuation">}</span><span class="token punctuation">,</span> <span class="token class-name">Oklab</span> <span class="token punctuation">{</span> l<span class="token punctuation">:</span> l2<span class="token punctuation">,</span> <span class="token punctuation">..</span> <span class="token punctuation">}</span><span class="token closure-punctuation punctuation">|</span></span> 
+			l1<span class="token punctuation">.</span><span class="token function">partial_cmp</span><span class="token punctuation">(</span>l2<span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">unwrap</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+	<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+	<span class="token keyword">let</span> index <span class="token operator">=</span> <span class="token constant">THRESHOLD_MAP</span><span class="token punctuation">[</span>x <span class="token keyword">as</span> <span class="token keyword">usize</span> <span class="token operator">%</span> <span class="token constant">MAP_SIZE</span><span class="token punctuation">]</span><span class="token punctuation">[</span>y <span class="token keyword">as</span> <span class="token keyword">usize</span> <span class="token operator">%</span> <span class="token constant">MAP_SIZE</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+	<span class="token keyword">let</span> chosen_color<span class="token punctuation">:</span> <span class="token class-name">Srgb</span> <span class="token operator">=</span> candidates<span class="token punctuation">[</span>index<span class="token punctuation">]</span><span class="token punctuation">.</span><span class="token function">into_color</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+	<span class="token keyword">let</span> output_pixel <span class="token operator">=</span> output_buffer<span class="token punctuation">.</span><span class="token function">get_pixel_mut</span><span class="token punctuation">(</span>x<span class="token punctuation">,</span> y<span class="token punctuation">)</span><span class="token punctuation">;</span>
+	<span class="token operator">*</span>output_pixel <span class="token operator">=</span> <span class="token namespace">image<span class="token punctuation">::</span></span><span class="token class-name">Rgba</span><span class="token punctuation">(</span><span class="token punctuation">[</span>
+		<span class="token punctuation">(</span>chosen_color<span class="token punctuation">.</span>red <span class="token operator">*</span> <span class="token number">255.0</span><span class="token punctuation">)</span> <span class="token keyword">as</span> <span class="token keyword">u8</span><span class="token punctuation">,</span>
+		<span class="token punctuation">(</span>chosen_color<span class="token punctuation">.</span>green <span class="token operator">*</span> <span class="token number">255.0</span><span class="token punctuation">)</span> <span class="token keyword">as</span> <span class="token keyword">u8</span><span class="token punctuation">,</span>
+		<span class="token punctuation">(</span>chosen_color<span class="token punctuation">.</span>blue <span class="token operator">*</span> <span class="token number">255.0</span><span class="token punctuation">)</span> <span class="token keyword">as</span> <span class="token keyword">u8</span><span class="token punctuation">,</span>
+		a<span class="token punctuation">,</span>
+	<span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</code><button class="copy-code-button">Copy</button></pre>
+          </div>
+          <div>
+            <p>Okay, let's see what we get!</p>
+          </div>
+          <div>
+            <div data-callout-metadata="" data-callout-fold="+" data-callout="success" class="callout is-collapsible">
+              <div class="callout-title">
+                <div class="callout-icon"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="svg-icon lucide-check">
+                    <polyline points="20 6 9 17 4 12"></polyline>
+                  </svg></div>
+                <div class="callout-title-inner">Output</div>
+                <div class="callout-fold"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="svg-icon lucide-chevron-down">
+                    <polyline points="6 9 12 15 18 9"></polyline>
+                  </svg></div>
+              </div>
+              <div class="callout-content">
+                <p><span alt="output3_oklab_dithered.png" src="output3_oklab_dithered.png" class="internal-embed media-embed image-embed is-loaded"><img alt="output3_oklab_dithered.png" src="lib\media\output3_oklab_dithered.png"></span></p>
+              </div>
+            </div>
+          </div>
+          <div>
+            <div data-callout-metadata="" data-callout-fold="-" data-callout="info" class="callout is-collapsible is-collapsed">
+              <div class="callout-title">
+                <div class="callout-icon"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="svg-icon lucide-info">
+                    <circle cx="12" cy="12" r="10"></circle>
+                    <line x1="12" y1="16" x2="12" y2="12"></line>
+                    <line x1="12" y1="8" x2="12.01" y2="8"></line>
+                  </svg></div>
+                <div class="callout-title-inner">Previous (Undithered, Oklab)</div>
+                <div class="callout-fold is-collapsed"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="svg-icon lucide-chevron-down">
+                    <polyline points="6 9 12 15 18 9"></polyline>
+                  </svg></div>
+              </div>
+              <div class="callout-content" style="display: none;">
+                <p><span alt="output2_oklab_no_dither.png" src="output2_oklab_no_dither.png" class="internal-embed media-embed image-embed is-loaded"><img alt="output2_oklab_no_dither.png" src="lib\media\output2_oklab_no_dither.png"></span></p>
+              </div>
+            </div>
+          </div>
+          <div>
+            <div data-callout-metadata="" data-callout-fold="-" data-callout="info" class="callout is-collapsible is-collapsed">
+              <div class="callout-title">
+                <div class="callout-icon"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="svg-icon lucide-info">
+                    <circle cx="12" cy="12" r="10"></circle>
+                    <line x1="12" y1="16" x2="12" y2="12"></line>
+                    <line x1="12" y1="8" x2="12.01" y2="8"></line>
+                  </svg></div>
+                <div class="callout-title-inner">Original</div>
+                <div class="callout-fold is-collapsed"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="svg-icon lucide-chevron-down">
+                    <polyline points="6 9 12 15 18 9"></polyline>
+                  </svg></div>
+              </div>
+              <div class="callout-content" style="display: none;">
+                <p><span alt="demo1.png" src="demo1.png" class="internal-embed media-embed image-embed is-loaded"><img alt="demo1.png" src="lib\media\demo1.png"></span></p>
+              </div>
+            </div>
+          </div>
+          <div>
+            <h1 data-heading="Dithering Transparency" id="Dithering_Transparency">Dithering Transparency</h1>
+          </div>
+          <div>
+            <p>As fun as it is to turn entire 3D scenes into pixel-art, I don't think the example we've been using is a very realistic use case. Instead, lets try making actual sprites with transparent background. Something we could realistically plop into a game.</p>
+          </div>
+          <div>
+            <p>The use case that comes to mind for me is to use this to create animated VFX, so I quickly threw together some flame simulations and rendered them at a low resolution.</p>
+          </div>
+          <div>
+            <div data-callout-metadata="" data-callout-fold="+" data-callout="tip" class="callout is-collapsible">
+              <div class="callout-title">
+                <div class="callout-icon"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="svg-icon lucide-flame">
+                    <path d="M8.5 14.5A2.5 2.5 0 0 0 11 12c0-1.38-.5-2-1-3-1.072-2.143-.224-4.054 2-6 .5 2.5 2 4.9 4 6.5 2 1.6 3 3.5 3 5.5a7 7 0 1 1-14 0c0-1.153.433-2.294 1-3a2.5 2.5 0 0 0 2.5 2.5z"></path>
+                  </svg></div>
+                <div class="callout-title-inner">Flame Simulation</div>
+                <div class="callout-fold"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="svg-icon lucide-chevron-down">
+                    <polyline points="6 9 12 15 18 9"></polyline>
+                  </svg></div>
+              </div>
+              <div class="callout-content">
+                <p><span alt="demo2.gif" src="demo2.gif" class="internal-embed media-embed image-embed is-loaded"><img alt="demo2.gif" src="lib\media\demo2.gif"></span></p>
+              </div>
+            </div>
+          </div>
+          <div>
+            <p>While we're shaking things up, let's swap out the color palette too. I really like <a data-tooltip-position="top" aria-label="https://lospec.com/palette-list/slso8" rel="noopener" class="external-link" href="https://lospec.com/palette-list/slso8" target="_blank">this one by Luis Miguel Maldonado</a>, so let's give that a try!</p>
+          </div>
+          <div>
+            <p><span alt="SLS08_palette.png" src="SLS08_palette.png" class="internal-embed media-embed image-embed is-loaded"><img alt="SLS08_palette.png" src="lib\media\sls08_palette.png"></span></p>
+          </div>
+          <div>
+            <div data-callout-metadata="" data-callout-fold="+" data-callout="question" class="callout is-collapsible">
+              <div class="callout-title">
+                <div class="callout-icon"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="svg-icon lucide-help-circle">
+                    <circle cx="12" cy="12" r="10"></circle>
+                    <path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"></path>
+                    <line x1="12" y1="17" x2="12.01" y2="17"></line>
+                  </svg></div>
+                <div class="callout-title-inner">Output</div>
+                <div class="callout-fold"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="svg-icon lucide-chevron-down">
+                    <polyline points="6 9 12 15 18 9"></polyline>
+                  </svg></div>
+              </div>
+              <div class="callout-content">
+                <p><span alt="output4_no_alpha_dither.gif" src="output4_no_alpha_dither.gif" class="internal-embed media-embed image-embed is-loaded"><img alt="output4_no_alpha_dither.gif" src="lib\media\output4_no_alpha_dither.gif"></span></p>
+              </div>
+            </div>
+          </div>
+          <div>
+            <div data-callout-metadata="" data-callout-fold="-" data-callout="tip" class="callout is-collapsible is-collapsed">
+              <div class="callout-title">
+                <div class="callout-icon"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="svg-icon lucide-flame">
+                    <path d="M8.5 14.5A2.5 2.5 0 0 0 11 12c0-1.38-.5-2-1-3-1.072-2.143-.224-4.054 2-6 .5 2.5 2 4.9 4 6.5 2 1.6 3 3.5 3 5.5a7 7 0 1 1-14 0c0-1.153.433-2.294 1-3a2.5 2.5 0 0 0 2.5 2.5z"></path>
+                  </svg></div>
+                <div class="callout-title-inner">Bonus: New Color Palette on the Old Scene</div>
+                <div class="callout-fold is-collapsed"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="svg-icon lucide-chevron-down">
+                    <polyline points="6 9 12 15 18 9"></polyline>
+                  </svg></div>
+              </div>
+              <div class="callout-content" style="display: none;">
+                <p>Just adding because I thought it looked nice.<br>
+                  <span alt="output5_new_palette.png" src="output5_new_palette.png" class="internal-embed media-embed image-embed is-loaded"><img alt="output5_new_palette.png" src="lib\media\output5_new_palette.png"></span>
+                </p>
+              </div>
+            </div>
+          </div>
+          <div>
+            <p>Looks pretty neat! But I think you can probably tell why this section is titled what it is from the image above. What's the point of snapping the result to a color palette, if we're just going to have wild color variations in the smoke from transparency? Let's dither it!</p>
+          </div>
+          <div>
+            <p>There might be a better way to do this, but my solution was to duplicate a lot of the code we used for color candidates and apply it to the principle of transparency. Rather than matching the alpha channel to a palette of possible transparencies, I just do <code>alpha.round()</code> to snap it to either <code>0.0</code> or <code>1.0</code>. I also set up a custom dithering constant for transparency for extra control.</p>
+          </div>
+          <div>
+            <p>This post is already super long, so if you want to see exactly how I implemented it, you'll find the full source code at the bottom of the page.</p>
+          </div>
+          <div>
+            <div data-callout-metadata="" data-callout-fold="+" data-callout="success" class="callout is-collapsible">
+              <div class="callout-title">
+                <div class="callout-icon"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="svg-icon lucide-check">
+                    <polyline points="20 6 9 17 4 12"></polyline>
+                  </svg></div>
+                <div class="callout-title-inner">Output</div>
+                <div class="callout-fold"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="svg-icon lucide-chevron-down">
+                    <polyline points="6 9 12 15 18 9"></polyline>
+                  </svg></div>
+              </div>
+              <div class="callout-content">
+                <p><span alt="output6_alpha_dither.mkv" src="output6_alpha_dither.mkv" class="internal-embed media-embed video-embed is-loaded"><video controls="" src="lib\media\output6_alpha_dither.mkv" style=""></video></span><br>
+                  <em>in a video format instead of a gif so you can scrub through and pixel peep.</em>
+                </p>
+              </div>
+            </div>
+          </div>
+          <div>
+            <h1 data-heading="Conclusion" id="Conclusion">Conclusion</h1>
+          </div>
+          <div>
+            <p>Wow, this took way longer to write than I expected. Here's some final thoughts before I go.</p>
+          </div>
+          <div>
+            <ul class="contains-task-list has-list-bullet">
+              <li data-line="0" data-task="*" class="task-list-item is-checked">
+                <div class="list-bullet"></div><input data-line="0" checked="" type="checkbox" class="task-list-item-checkbox">This technique seems to work best on individual sprites and animations. Don't just plug it into your viewport and call it pixel art :P
+              </li>
+              <li data-line="1" data-task="*" class="task-list-item is-checked">
+                <div class="list-bullet"></div><input data-line="1" checked="" type="checkbox" class="task-list-item-checkbox">Smaller color palettes seem to work better. If you're using a large color palette for your game, maybe you could feed the script a more tailored, smaller slice of your color palette.
+              </li>
+              <li data-line="2" data-task="*" class="task-list-item is-checked">
+                <div class="list-bullet"></div><input data-line="2" checked="" type="checkbox" class="task-list-item-checkbox">As cool as this is, this is far from a replacement for actual art talent in my project. We've got a really solid team of talented individuals coming together for this game (I'll share more in a future blog posts) but we're a bit thin when it comes to illustration skills. Though this will help alleviate some of the art burden, it's not meant to replace artists.
+              </li>
+              <li data-line="3" data-task="b" class="task-list-item is-checked">
+                <div class="list-bullet"></div><input data-line="3" checked="" type="checkbox" class="task-list-item-checkbox">I've got a ton more ideas on how I want to use this system to expand what's visually possible for my game. If you're interested in seeing what's next, please bookmark this page (I'll try to get a newsletter or something set up soon) and check up on me in a little while. I'll post an update on my twitter account whenever I've got something new for you guys.
+              </li>
+            </ul>
+          </div>
+          <div>
+            <p>Thanks for reading! This is my first time writing a blog post so I'm sure it's full of all sorts of issues. If you have any questions or would like to make some suggestions, <a data-tooltip-position="top" aria-label="https://twitter.com/cosbdev" rel="noopener" class="external-link" href="https://twitter.com/cosbdev" target="_blank">please shoot me a message</a>. If you'd like to support me, you can follow me on <a data-tooltip-position="top" aria-label="https://twitter.com/cosbdev" rel="noopener" class="external-link" href="https://twitter.com/cosbdev" target="_blank">twitter</a> or use the link below to buy me a boba.</p>
+          </div>
+          <div>
+            <p><a href="https://www.buymeacoffee.com/davidcosby" target="_blank" rel="noopener"><img style="max-width: 16em" src="https://img.buymeacoffee.com/button-api/?text=Buy me a boba&amp;emoji=🧋&amp;slug=davidcosby&amp;button_colour=d699b6&amp;font_colour=293136&amp;font_family=Lato&amp;outline_colour=293136&amp;coffee_colour=d3c6aa" referrerpolicy="no-referrer"></a></p>
+          </div>
+          <div>
+            <h1 data-heading="Final Source Code" id="Final_Source_Code">Final Source Code</h1>
+          </div>
+          <div>
+            <pre class="language-rust" tabindex="0"><code class="language-rust is-loaded"><span class="token keyword">use</span> <span class="token namespace">image<span class="token punctuation">::</span></span><span class="token punctuation">{</span><span class="token namespace">io<span class="token punctuation">::</span></span><span class="token class-name">Reader</span><span class="token punctuation">,</span> <span class="token class-name">ImageBuffer</span><span class="token punctuation">,</span> <span class="token class-name">ImageError</span><span class="token punctuation">}</span><span class="token punctuation">;</span>
+<span class="token keyword">use</span> <span class="token namespace">palette<span class="token punctuation">::</span></span><span class="token punctuation">{</span><span class="token namespace">color_difference<span class="token punctuation">::</span></span><span class="token class-name">EuclideanDistance</span><span class="token punctuation">,</span> <span class="token class-name">IntoColor</span><span class="token punctuation">,</span> <span class="token class-name">Oklab</span><span class="token punctuation">,</span> <span class="token class-name">Srgb</span><span class="token punctuation">}</span><span class="token punctuation">;</span>
+<span class="token comment">// read/write filepaths</span>
+<span class="token keyword">const</span> <span class="token constant">INPUT_PATH</span><span class="token punctuation">:</span> <span class="token operator">&amp;</span><span class="token keyword">str</span> <span class="token operator">=</span> <span class="token string">"img/input.png"</span><span class="token punctuation">;</span>
+<span class="token keyword">const</span> <span class="token constant">OUTPUT_PATH</span><span class="token punctuation">:</span> <span class="token operator">&amp;</span><span class="token keyword">str</span> <span class="token operator">=</span> <span class="token string">"img/output.png"</span><span class="token punctuation">;</span>
+<span class="token comment">// Bayer matrix definition</span>
+<span class="token keyword">const</span> <span class="token constant">THRESHOLD_MAP</span><span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token punctuation">[</span><span class="token keyword">usize</span><span class="token punctuation">;</span> <span class="token number">2</span><span class="token punctuation">]</span><span class="token punctuation">;</span> <span class="token number">2</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">]</span><span class="token punctuation">,</span> <span class="token punctuation">[</span><span class="token number">3</span><span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+<span class="token keyword">const</span> <span class="token constant">MAP_SIZE</span><span class="token punctuation">:</span> <span class="token keyword">usize</span> <span class="token operator">=</span> <span class="token constant">THRESHOLD_MAP</span><span class="token punctuation">.</span><span class="token function">len</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token comment">// Dithering controls for color and transparency</span>
+<span class="token keyword">const</span> <span class="token constant">COLOR_DITHER</span><span class="token punctuation">:</span> <span class="token keyword">f32</span> <span class="token operator">=</span> <span class="token number">0.04</span><span class="token punctuation">;</span>
+<span class="token keyword">const</span> <span class="token constant">ALPHA_DITHER</span><span class="token punctuation">:</span> <span class="token keyword">f32</span> <span class="token operator">=</span> <span class="token number">0.12</span><span class="token punctuation">;</span>
+<span class="token comment">// Color palette of choice</span>
+<span class="token keyword">const</span> <span class="token constant">PALETTE_HEX</span><span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token operator">&amp;</span><span class="token keyword">str</span><span class="token punctuation">;</span> <span class="token number">8</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token punctuation">[</span>
+    <span class="token string">"0d2b45"</span><span class="token punctuation">,</span> <span class="token string">"203c56"</span><span class="token punctuation">,</span> <span class="token string">"544e68"</span><span class="token punctuation">,</span> <span class="token string">"8d697a"</span><span class="token punctuation">,</span> <span class="token string">"d08159"</span><span class="token punctuation">,</span> <span class="token string">"ffaa5e"</span><span class="token punctuation">,</span> <span class="token string">"ffd4a3"</span><span class="token punctuation">,</span> <span class="token string">"ffecd6"</span><span class="token punctuation">,</span>
+<span class="token punctuation">]</span><span class="token punctuation">;</span>
+
+<span class="token keyword">fn</span> <span class="token function-definition function">palette_as_oklab</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">-&gt;</span> <span class="token class-name">Vec</span><span class="token operator">&lt;</span><span class="token class-name">Oklab</span><span class="token operator">&gt;</span> <span class="token punctuation">{</span>
+    <span class="token keyword">let</span> <span class="token keyword">mut</span> oklab_palette<span class="token punctuation">:</span> <span class="token class-name">Vec</span><span class="token operator">&lt;</span><span class="token class-name">Oklab</span><span class="token operator">&gt;</span> <span class="token operator">=</span> <span class="token macro property">vec!</span><span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+    <span class="token keyword">for</span> hex <span class="token keyword">in</span> <span class="token constant">PALETTE_HEX</span> <span class="token punctuation">{</span>
+        <span class="token keyword">let</span> rgb <span class="token operator">=</span> <span class="token function">hex_to_rgb</span><span class="token punctuation">(</span>hex<span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">unwrap</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        oklab_palette<span class="token punctuation">.</span><span class="token function">push</span><span class="token punctuation">(</span>rgb<span class="token punctuation">.</span><span class="token function">into_color</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+    oklab_palette
+<span class="token punctuation">}</span>
+
+<span class="token keyword">fn</span> <span class="token function-definition function">hex_to_rgb</span><span class="token punctuation">(</span>hex<span class="token punctuation">:</span> <span class="token operator">&amp;</span><span class="token keyword">str</span><span class="token punctuation">)</span> <span class="token punctuation">-&gt;</span> <span class="token class-name">Result</span><span class="token operator">&lt;</span><span class="token class-name">Srgb</span><span class="token punctuation">,</span> <span class="token operator">&amp;</span><span class="token lifetime-annotation symbol">'static</span> <span class="token keyword">str</span><span class="token operator">&gt;</span> <span class="token punctuation">{</span>
+    <span class="token keyword">if</span> hex<span class="token punctuation">.</span><span class="token function">len</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">!=</span> <span class="token number">6</span> <span class="token punctuation">{</span>
+        <span class="token keyword">return</span> <span class="token class-name">Err</span><span class="token punctuation">(</span><span class="token string">"Invalid hex color code"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+	
+    <span class="token keyword">let</span> r <span class="token operator">=</span> <span class="token keyword">u8</span><span class="token punctuation">::</span><span class="token function">from_str_radix</span><span class="token punctuation">(</span><span class="token operator">&amp;</span>hex<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">..</span><span class="token number">2</span><span class="token punctuation">]</span><span class="token punctuation">,</span> <span class="token number">16</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">map_err</span><span class="token punctuation">(</span><span class="token closure-params"><span class="token closure-punctuation punctuation">|</span>_<span class="token closure-punctuation punctuation">|</span></span> <span class="token string">"Invalid hex color code"</span><span class="token punctuation">)</span><span class="token operator">?</span><span class="token punctuation">;</span>
+    <span class="token keyword">let</span> g <span class="token operator">=</span> <span class="token keyword">u8</span><span class="token punctuation">::</span><span class="token function">from_str_radix</span><span class="token punctuation">(</span><span class="token operator">&amp;</span>hex<span class="token punctuation">[</span><span class="token number">2</span><span class="token punctuation">..</span><span class="token number">4</span><span class="token punctuation">]</span><span class="token punctuation">,</span> <span class="token number">16</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">map_err</span><span class="token punctuation">(</span><span class="token closure-params"><span class="token closure-punctuation punctuation">|</span>_<span class="token closure-punctuation punctuation">|</span></span> <span class="token string">"Invalid hex color code"</span><span class="token punctuation">)</span><span class="token operator">?</span><span class="token punctuation">;</span>
+    <span class="token keyword">let</span> b <span class="token operator">=</span> <span class="token keyword">u8</span><span class="token punctuation">::</span><span class="token function">from_str_radix</span><span class="token punctuation">(</span><span class="token operator">&amp;</span>hex<span class="token punctuation">[</span><span class="token number">4</span><span class="token punctuation">..</span><span class="token number">6</span><span class="token punctuation">]</span><span class="token punctuation">,</span> <span class="token number">16</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">map_err</span><span class="token punctuation">(</span><span class="token closure-params"><span class="token closure-punctuation punctuation">|</span>_<span class="token closure-punctuation punctuation">|</span></span> <span class="token string">"Invalid hex color code"</span><span class="token punctuation">)</span><span class="token operator">?</span><span class="token punctuation">;</span>
+	
+    <span class="token class-name">Ok</span><span class="token punctuation">(</span><span class="token class-name">Srgb</span><span class="token punctuation">::</span><span class="token function">new</span><span class="token punctuation">(</span>
+        r <span class="token keyword">as</span> <span class="token keyword">f32</span> <span class="token operator">/</span> <span class="token number">255.0</span><span class="token punctuation">,</span>
+        g <span class="token keyword">as</span> <span class="token keyword">f32</span> <span class="token operator">/</span> <span class="token number">255.0</span><span class="token punctuation">,</span>
+        b <span class="token keyword">as</span> <span class="token keyword">f32</span> <span class="token operator">/</span> <span class="token number">255.0</span><span class="token punctuation">,</span>
+    <span class="token punctuation">)</span><span class="token punctuation">)</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">fn</span> <span class="token function-definition function">find_closest</span><span class="token punctuation">(</span>palette<span class="token punctuation">:</span> <span class="token operator">&amp;</span><span class="token class-name">Vec</span><span class="token operator">&lt;</span><span class="token class-name">Oklab</span><span class="token operator">&gt;</span><span class="token punctuation">,</span> color<span class="token punctuation">:</span> <span class="token class-name">Oklab</span><span class="token punctuation">)</span> <span class="token punctuation">-&gt;</span> <span class="token class-name">Oklab</span> <span class="token punctuation">{</span>
+    <span class="token keyword">let</span> <span class="token keyword">mut</span> dist_of_closest <span class="token operator">=</span> <span class="token namespace">std<span class="token punctuation">::</span></span><span class="token keyword">f32</span><span class="token punctuation">::</span><span class="token constant">MAX</span><span class="token punctuation">;</span>
+    <span class="token keyword">let</span> <span class="token keyword">mut</span> closest <span class="token operator">=</span> <span class="token class-name">Oklab</span><span class="token punctuation">::</span><span class="token function">new</span><span class="token punctuation">(</span><span class="token number">0.0</span><span class="token punctuation">,</span> <span class="token number">0.0</span><span class="token punctuation">,</span> <span class="token number">0.0</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+	
+    <span class="token keyword">for</span> palette_color <span class="token keyword">in</span> palette <span class="token punctuation">{</span>
+        <span class="token keyword">let</span> d <span class="token operator">=</span> color<span class="token punctuation">.</span><span class="token function">distance_squared</span><span class="token punctuation">(</span><span class="token operator">*</span>palette_color<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token keyword">if</span> d <span class="token operator">&lt;</span> dist_of_closest <span class="token punctuation">{</span>
+            dist_of_closest <span class="token operator">=</span> d<span class="token punctuation">;</span>
+            closest <span class="token operator">=</span> <span class="token operator">*</span>palette_color
+        <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+    closest
+<span class="token punctuation">}</span>
+
+<span class="token keyword">fn</span> <span class="token function-definition function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">-&gt;</span> <span class="token class-name">Result</span><span class="token operator">&lt;</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token class-name">ImageError</span><span class="token operator">&gt;</span> <span class="token punctuation">{</span>
+    <span class="token comment">// import color palette</span>
+    <span class="token keyword">let</span> palette_oklab <span class="token operator">=</span> <span class="token function">palette_as_oklab</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token comment">// import source image</span>
+    <span class="token keyword">let</span> img <span class="token operator">=</span> <span class="token class-name">Reader</span><span class="token punctuation">::</span><span class="token function">open</span><span class="token punctuation">(</span><span class="token constant">INPUT_PATH</span><span class="token punctuation">)</span><span class="token operator">?</span><span class="token punctuation">.</span><span class="token function">decode</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">?</span><span class="token punctuation">;</span>
+    <span class="token keyword">let</span> pixels <span class="token operator">=</span> img<span class="token punctuation">.</span><span class="token function">as_rgba8</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">unwrap</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">enumerate_pixels</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token comment">// create a place to store output pixels</span>
+    <span class="token keyword">let</span> <span class="token keyword">mut</span> output_buffer <span class="token operator">=</span> <span class="token class-name">ImageBuffer</span><span class="token punctuation">::</span><span class="token function">new</span><span class="token punctuation">(</span>img<span class="token punctuation">.</span><span class="token function">width</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span> img<span class="token punctuation">.</span><span class="token function">height</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+	
+    <span class="token keyword">for</span> pixel <span class="token keyword">in</span> pixels <span class="token punctuation">{</span>
+        <span class="token keyword">let</span> <span class="token punctuation">(</span>x<span class="token punctuation">,</span> y<span class="token punctuation">)</span> <span class="token operator">=</span> <span class="token punctuation">(</span>pixel<span class="token number">.0</span><span class="token punctuation">,</span> pixel<span class="token number">.1</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token keyword">let</span> <span class="token punctuation">[</span>r<span class="token punctuation">,</span> g<span class="token punctuation">,</span> b<span class="token punctuation">,</span> a<span class="token punctuation">]</span> <span class="token operator">=</span> pixel<span class="token number">.2</span> <span class="token punctuation">.</span><span class="token number">0</span><span class="token punctuation">;</span>
+        <span class="token keyword">let</span> alpha_f32 <span class="token operator">=</span> <span class="token punctuation">(</span>a <span class="token keyword">as</span> <span class="token keyword">f32</span><span class="token punctuation">)</span> <span class="token operator">/</span> <span class="token number">255.0</span><span class="token punctuation">;</span>
+        <span class="token comment">// cast pixel to oklab</span>
+        <span class="token keyword">let</span> pixel_rgb <span class="token operator">=</span> <span class="token class-name">Srgb</span><span class="token punctuation">::</span><span class="token function">new</span><span class="token punctuation">(</span>r <span class="token keyword">as</span> <span class="token keyword">f32</span> <span class="token operator">/</span> <span class="token number">255.0</span><span class="token punctuation">,</span> g <span class="token keyword">as</span> <span class="token keyword">f32</span> <span class="token operator">/</span> <span class="token number">255.0</span><span class="token punctuation">,</span> b <span class="token keyword">as</span> <span class="token keyword">f32</span> <span class="token operator">/</span> <span class="token number">255.0</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token keyword">let</span> pixel_oklab<span class="token punctuation">:</span> <span class="token class-name">Oklab</span> <span class="token operator">=</span> pixel_rgb<span class="token punctuation">.</span><span class="token function">into_color</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token comment">// create a list of candidate color and alpha values</span>
+        <span class="token keyword">let</span> <span class="token keyword">mut</span> candidates_c<span class="token punctuation">:</span> <span class="token class-name">Vec</span><span class="token operator">&lt;</span><span class="token class-name">Oklab</span><span class="token operator">&gt;</span> <span class="token operator">=</span> <span class="token macro property">vec!</span><span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+        <span class="token keyword">let</span> <span class="token keyword">mut</span> candidates_a<span class="token punctuation">:</span> <span class="token class-name">Vec</span><span class="token operator">&lt;</span><span class="token keyword">f32</span><span class="token operator">&gt;</span> <span class="token operator">=</span> <span class="token macro property">vec!</span><span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+        <span class="token keyword">let</span> <span class="token keyword">mut</span> error_c <span class="token operator">=</span> <span class="token class-name">Oklab</span><span class="token punctuation">::</span><span class="token function">new</span><span class="token punctuation">(</span><span class="token number">0.0</span><span class="token punctuation">,</span> <span class="token number">0.0</span><span class="token punctuation">,</span> <span class="token number">0.0</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token keyword">let</span> <span class="token keyword">mut</span> error_a <span class="token operator">=</span> <span class="token number">0.0</span><span class="token punctuation">;</span>
+        <span class="token keyword">for</span> _ <span class="token keyword">in</span> <span class="token number">0</span><span class="token punctuation">..</span><span class="token constant">MAP_SIZE</span><span class="token punctuation">.</span><span class="token function">pow</span><span class="token punctuation">(</span><span class="token number">2</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            <span class="token comment">// color</span>
+            <span class="token keyword">let</span> sample_c <span class="token operator">=</span> pixel_oklab <span class="token operator">+</span> error_c <span class="token operator">*</span> <span class="token constant">COLOR_DITHER</span><span class="token punctuation">;</span>
+            <span class="token keyword">let</span> candidate_c <span class="token operator">=</span> <span class="token function">find_closest</span><span class="token punctuation">(</span><span class="token operator">&amp;</span>palette_oklab<span class="token punctuation">,</span> sample_c<span class="token punctuation">)</span><span class="token punctuation">;</span>
+            candidates_c<span class="token punctuation">.</span><span class="token function">push</span><span class="token punctuation">(</span>candidate_c<span class="token punctuation">)</span><span class="token punctuation">;</span>
+            error_c <span class="token operator">+=</span> pixel_oklab <span class="token operator">-</span> candidate_c<span class="token punctuation">;</span>
+			
+            <span class="token comment">// alpha</span>
+            <span class="token keyword">let</span> sample_a <span class="token operator">=</span> alpha_f32 <span class="token operator">+</span> error_a <span class="token operator">*</span> <span class="token constant">ALPHA_DITHER</span><span class="token punctuation">;</span>
+            <span class="token keyword">let</span> candidate_a <span class="token operator">=</span> sample_a<span class="token punctuation">.</span><span class="token function">round</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            candidates_a<span class="token punctuation">.</span><span class="token function">push</span><span class="token punctuation">(</span>candidate_a<span class="token punctuation">)</span><span class="token punctuation">;</span>
+            error_a <span class="token operator">+=</span> alpha_f32 <span class="token operator">-</span> candidate_a<span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+		
+        <span class="token comment">// sort candidates by brightness and alpha, respectively</span>
+        candidates_c
+            <span class="token punctuation">.</span><span class="token function">sort_by</span><span class="token punctuation">(</span><span class="token closure-params"><span class="token closure-punctuation punctuation">|</span><span class="token class-name">Oklab</span> <span class="token punctuation">{</span> l<span class="token punctuation">:</span> l1<span class="token punctuation">,</span> <span class="token punctuation">..</span> <span class="token punctuation">}</span><span class="token punctuation">,</span> <span class="token class-name">Oklab</span> <span class="token punctuation">{</span> l<span class="token punctuation">:</span> l2<span class="token punctuation">,</span> <span class="token punctuation">..</span> <span class="token punctuation">}</span><span class="token closure-punctuation punctuation">|</span></span> l1<span class="token punctuation">.</span><span class="token function">partial_cmp</span><span class="token punctuation">(</span>l2<span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">unwrap</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        candidates_a<span class="token punctuation">.</span><span class="token function">sort_by</span><span class="token punctuation">(</span><span class="token closure-params"><span class="token closure-punctuation punctuation">|</span>a1<span class="token punctuation">,</span> a2<span class="token closure-punctuation punctuation">|</span></span> a1<span class="token punctuation">.</span><span class="token function">partial_cmp</span><span class="token punctuation">(</span><span class="token operator">&amp;</span>a2<span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">unwrap</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+        <span class="token comment">// choose a candidate based on the pixel coordinates</span>
+        <span class="token keyword">let</span> index <span class="token operator">=</span> <span class="token constant">THRESHOLD_MAP</span><span class="token punctuation">[</span>x <span class="token keyword">as</span> <span class="token keyword">usize</span> <span class="token operator">%</span> <span class="token constant">MAP_SIZE</span><span class="token punctuation">]</span><span class="token punctuation">[</span>y <span class="token keyword">as</span> <span class="token keyword">usize</span> <span class="token operator">%</span> <span class="token constant">MAP_SIZE</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+        <span class="token keyword">let</span> chosen_color<span class="token punctuation">:</span> <span class="token class-name">Srgb</span> <span class="token operator">=</span> candidates_c<span class="token punctuation">[</span>index<span class="token punctuation">]</span><span class="token punctuation">.</span><span class="token function">into_color</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token keyword">let</span> chosen_alpha <span class="token operator">=</span> candidates_a<span class="token punctuation">[</span>index<span class="token punctuation">]</span><span class="token punctuation">;</span>
+		
+        <span class="token comment">// write new pixel color to the output buffer</span>
+        <span class="token keyword">let</span> output_pixel <span class="token operator">=</span> output_buffer<span class="token punctuation">.</span><span class="token function">get_pixel_mut</span><span class="token punctuation">(</span>x<span class="token punctuation">,</span> y<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token operator">*</span>output_pixel <span class="token operator">=</span> <span class="token namespace">image<span class="token punctuation">::</span></span><span class="token class-name">Rgba</span><span class="token punctuation">(</span><span class="token punctuation">[</span>
+            <span class="token punctuation">(</span>chosen_color<span class="token punctuation">.</span>red <span class="token operator">*</span> <span class="token number">255.0</span><span class="token punctuation">)</span> <span class="token keyword">as</span> <span class="token keyword">u8</span><span class="token punctuation">,</span>
+            <span class="token punctuation">(</span>chosen_color<span class="token punctuation">.</span>green <span class="token operator">*</span> <span class="token number">255.0</span><span class="token punctuation">)</span> <span class="token keyword">as</span> <span class="token keyword">u8</span><span class="token punctuation">,</span>
+            <span class="token punctuation">(</span>chosen_color<span class="token punctuation">.</span>blue <span class="token operator">*</span> <span class="token number">255.0</span><span class="token punctuation">)</span> <span class="token keyword">as</span> <span class="token keyword">u8</span><span class="token punctuation">,</span>
+            <span class="token punctuation">(</span>chosen_alpha <span class="token operator">*</span> <span class="token number">255.0</span><span class="token punctuation">)</span> <span class="token keyword">as</span> <span class="token keyword">u8</span><span class="token punctuation">,</span>
+        <span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+	
+    <span class="token comment">// save as a png</span>
+    output_buffer<span class="token punctuation">.</span><span class="token function">save</span><span class="token punctuation">(</span><span class="token constant">OUTPUT_PATH</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">unwrap</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token class-name">Ok</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+<span class="token punctuation">}</span>
+</code><button class="copy-code-button">Copy</button></pre>
+          </div>
+          <div></div>
+          <div>
+          </div>
+          <div>
+            <section class="footnotes">
+              <hr>
+              <ol>
+                <li data-line="0" data-footnote-id="fn-1-e3516f0ea370509b" id="fn-1-e3516f0ea370509b">Just as RGB has color spaces like HSV and HSL to manipulate hue, OkLab has OkHsv and OkHsl. <a data-tooltip-position="top" aria-label="https://bottosson.github.io/posts/colorpicker/" rel="noopener" class="external-link" href="https://bottosson.github.io/posts/colorpicker/" target="_blank">Read more here.</a><a href="#fnref-1-e3516f0ea370509b" class="footnote-backref footnote-link" target="_self" rel="noopener">↩︎</a></li>
+              </ol>
+            </section>
+          </div>
+          <div class="mod-footer">
+            <div class="embedded-backlinks" style="display: none;"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="sidebar-right sidebar">
+      <div class="sidebar-content"><span class="sidebar-section-header">Interactive Graph</span>
+        <div class="graph-view-placeholder">
+          <div class="graph-view-container">
+            <div class="graph-icon graph-expand" role="button" aria-label="Expand" data-tooltip-position="top"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="svg-icon lucide-arrow-up-right">
+                <line x1="7" y1="17" x2="17" y2="7"></line>
+                <polyline points="7 7 17 7 17 17"></polyline>
+              </svg></div>
+            <canvas id="graph-canvas" width="512px" height="512px"></canvas>
+          </div>
+        </div>
+        <div class="tree-container outline-tree" data-depth="0">
+          <div class="tree-header"><span class="sidebar-section-header">Table Of Contents</span><button class="clickable-icon collapse-tree-button"><iconify-icon icon="ph:arrows-in-line-horizontal-bold" width="18px" height="18px" rotate="90deg" color="currentColor"></iconify-icon></button></div>
+          <div class="tree-scroll-area">
+            <div class="tree-item mod-tree-heading" data-depth="1">
+              <div class="tree-item-contents"><a class="tree-item-link" href="#Setting_Up_Blender"><span class="tree-item-title">Setting Up Blender</span></a></div>
+              <div class="tree-item-children"></div>
+            </div>
+            <div class="tree-item mod-tree-heading" data-depth="1">
+              <div class="tree-item-contents"><a class="tree-item-link" href="#Matching_to_a_Color_Palette"><span class="tree-item-title">Matching to a Color Palette</span></a></div>
+              <div class="tree-item-children">
+                <div class="tree-item mod-tree-heading" data-depth="2">
+                  <div class="tree-item-contents"><a class="tree-item-link" href="#Bringing_in_the_Color_Palette"><span class="tree-item-title">Bringing in the Color Palette</span></a></div>
+                  <div class="tree-item-children"></div>
+                </div>
+                <div class="tree-item mod-tree-heading" data-depth="2">
+                  <div class="tree-item-contents"><a class="tree-item-link" href="#Finding_the_Closest_Palette_Color"><span class="tree-item-title">Finding the Closest Palette Color</span></a></div>
+                  <div class="tree-item-children"></div>
+                </div>
+              </div>
+            </div>
+            <div class="tree-item mod-tree-heading" data-depth="1">
+              <div class="tree-item-contents"><a class="tree-item-link" href="#Better_Color_Matches_with_the_Oklab_Color_Space"><span class="tree-item-title">Better Color Matches with the Oklab Color Space</span></a></div>
+              <div class="tree-item-children">
+                <div class="tree-item mod-tree-heading" data-depth="2">
+                  <div class="tree-item-contents"><a class="tree-item-link" href="#What's_Wrong_with_RGB?"><span class="tree-item-title">What's Wrong with RGB?</span></a></div>
+                  <div class="tree-item-children"></div>
+                </div>
+                <div class="tree-item mod-tree-heading" data-depth="2">
+                  <div class="tree-item-contents"><a class="tree-item-link" href="#Introducing_Oklab"><span class="tree-item-title">Introducing Oklab</span></a></div>
+                  <div class="tree-item-children"></div>
+                </div>
+                <div class="tree-item mod-tree-heading" data-depth="2">
+                  <div class="tree-item-contents"><a class="tree-item-link" href="#Okay_We_Get_it,_Just_Program_the_Thing_Already"><span class="tree-item-title">Okay We Get it, Just Program the Thing Already</span></a></div>
+                  <div class="tree-item-children"></div>
+                </div>
+              </div>
+            </div>
+            <div class="tree-item mod-tree-heading" data-depth="1">
+              <div class="tree-item-contents"><a class="tree-item-link" href="#Dithering_Close_Color_Matches"><span class="tree-item-title">Dithering Close Color Matches</span></a></div>
+              <div class="tree-item-children"></div>
+            </div>
+            <div class="tree-item mod-tree-heading" data-depth="1">
+              <div class="tree-item-contents"><a class="tree-item-link" href="#Dithering_Transparency"><span class="tree-item-title">Dithering Transparency</span></a></div>
+              <div class="tree-item-children"></div>
+            </div>
+            <div class="tree-item mod-tree-heading" data-depth="1">
+              <div class="tree-item-contents"><a class="tree-item-link" href="#Conclusion"><span class="tree-item-title">Conclusion</span></a></div>
+              <div class="tree-item-children"></div>
+            </div>
+            <div class="tree-item mod-tree-heading" data-depth="1">
+              <div class="tree-item-contents"><a class="tree-item-link" href="#Final_Source_Code"><span class="tree-item-title">Final Source Code</span></a></div>
+              <div class="tree-item-children"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+
+</html>
