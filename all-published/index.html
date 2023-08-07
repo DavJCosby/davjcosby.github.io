@@ -1,0 +1,651 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+  <title>index</title>
+  <base href="../">
+  <meta id="root-path" root-path="../">
+
+  <link rel="icon" sizes="96x96" href="https://publish-01.obsidian.md/access/f786db9fac45774fa4f0d8112e232d67/favicon-96x96.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes, minimum-scale=1.0, maximum-scale=5.0">
+  <meta charset="UTF-8">
+  <script src="https://code.iconify.design/iconify-icon/1.0.3/iconify-icon.min.js"></script>
+
+  <link rel="stylesheet" href="lib/styles/obsidian-styles.css">
+  <link rel="stylesheet" href="lib/styles/theme.css">
+  <link rel="stylesheet" href="lib/styles/plugin-styles.css">
+  <link rel="stylesheet" href="lib/styles/snippets.css">
+  <style> </style>
+
+
+  <!-- Graph View Data -->
+  <script>
+    let nodes = {
+      "nodeCount": 2,
+      "linkCount": 1,
+      "radii": [7, 7],
+      "labels": ["index", "Faux Pixel Art with Blender, Rust, Fancy Color Spaces and 'Borrowed' Algorithms"],
+      "paths": ["all-published/index.html", "all-published/miscellaneous-tech/faux-pixel-art-with-blender,-rust,-fancy-color-spaces-and-'borrowed'-algorithms.html"],
+      "linkSources": [0],
+      "linkTargets": [1]
+    };
+    let attractionForce = 1;
+    let linkLength = 10;
+    let repulsionForce = 150;
+    let centralForce = 3;
+    let edgePruning = 100;
+  </script>
+
+  <script type="module" src="lib/scripts/graph_view.js"></script>
+
+  <script src="lib/scripts/graph_wasm.js"></script>
+
+  <script src="lib/scripts/tinycolor.js"></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/pixi.js/7.2.4/pixi.min.js" integrity="sha512-Ch/O6kL8BqUwAfCF7Ie5SX1Hin+BJgYH4pNjRqXdTEqMsis1TUYg+j6nnI9uduPjGaj7DN4UKCZgpvoExt6dkw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+  <script src="lib/scripts/webpage.js"></script>
+
+</head>
+
+<body class="theme-dark mod-windows is-frameless is-hidden-frameless obsidian-app show-inline-title show-view-header minimal-theme minimal-everforest-dark minimal-everforest-light colorful-active links-int-on links-ext-on system-shade full-width-media minimal-folding minimal-readable minimal-light minimal-dark chart-default-width table-default-width img-default-width iframe-default-width map-default-width highlightr-rounded" style="--zoom-factor:1; --font-interface-override:&quot;M PLUS 1p&quot;; --font-text-override:Baskervville, &quot;Palatino Linotype&quot;; --font-print-override:Baskervville, &quot;Palatino Linotype&quot;; --font-monospace-override:&quot;M PLUS Code Latin Expanded&quot;; --font-text-size:14px; --line-width:50em; --line-width-adaptive:50em; --file-line-width:50em; --content-width:500em; --sidebar-width:25em; --collapse-arrow-size:0.4em; --tree-horizontal-spacing:1em; --tree-vertical-spacing:0.5em; --sidebar-margin:12px;">
+  <div class="webpage-container">
+    <div class="sidebar-left sidebar">
+      <div class="sidebar-content">
+        <div><label class="theme-toggle-container" for="theme_toggle"><input class="theme-toggle-input" type="checkbox" id="theme_toggle">
+            <div class="toggle-background"></div>
+          </label></div>
+        <div class="tree-container file-tree mod-nav-indicator" data-depth="0">
+          <div class="tree-header"><span class="sidebar-section-header">David's Blog</span><button class="clickable-icon collapse-tree-button is-collapsed"><iconify-icon icon="ph:arrows-in-line-horizontal-bold" width="18px" height="18px" rotate="90deg" color="currentColor"></iconify-icon></button></div>
+          <div class="tree-scroll-area">
+            <div class="tree-item mod-tree-folder mod-collapsible is-collapsed" data-depth="1">
+              <div class="tree-item-contents">
+                <div class="tree-item-icon collapse-icon"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="svg-icon right-triangle">
+                    <path d="M3 8L12 17L21 8"></path>
+                  </svg></div><a class="tree-item-link" href="all-published"><span class="tree-item-title">All Published</span></a>
+              </div>
+              <div class="tree-item-children">
+                <div class="tree-item mod-tree-folder mod-collapsible is-collapsed" data-depth="2">
+                  <div class="tree-item-contents">
+                    <div class="tree-item-icon collapse-icon"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="svg-icon right-triangle">
+                        <path d="M3 8L12 17L21 8"></path>
+                      </svg></div><a class="tree-item-link" href="all-published/miscellaneous-tech"><span class="tree-item-title">Miscellaneous Tech</span></a>
+                  </div>
+                  <div class="tree-item-children">
+                    <div class="tree-item mod-tree-file" data-depth="3">
+                      <div class="tree-item-contents"><a class="tree-item-link" href="all-published/miscellaneous-tech/faux-pixel-art-with-blender,-rust,-fancy-color-spaces-and-'borrowed'-algorithms.html"><span class="tree-item-title">Faux Pixel Art with Blender, Rust, Fancy Color Spaces and 'Borrowed' Algorithms</span></a></div>
+                      <div class="tree-item-children"></div>
+                    </div>
+                  </div>
+                </div>
+                <div class="tree-item mod-tree-file" data-depth="2">
+                  <div class="tree-item-contents"><a class="tree-item-link" href="all-published/index.html"><span class="tree-item-title">index</span></a></div>
+                  <div class="tree-item-children"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="document-container">
+      <div class="markdown-preview-view markdown-rendered node-insert-event is-readable-line-width allow-fold-headings show-indentation-guide allow-fold-lists" style="tab-size: 4;">
+        <style id="MJX-CHTML-styles">
+          mjx-container[jax="CHTML"] {
+            line-height: 0;
+          }
+
+          mjx-container [space="1"] {
+            margin-left: 0.111em;
+          }
+
+          mjx-container [space="2"] {
+            margin-left: 0.167em;
+          }
+
+          mjx-container [space="3"] {
+            margin-left: 0.222em;
+          }
+
+          mjx-container [space="4"] {
+            margin-left: 0.278em;
+          }
+
+          mjx-container [space="5"] {
+            margin-left: 0.333em;
+          }
+
+          mjx-container [rspace="1"] {
+            margin-right: 0.111em;
+          }
+
+          mjx-container [rspace="2"] {
+            margin-right: 0.167em;
+          }
+
+          mjx-container [rspace="3"] {
+            margin-right: 0.222em;
+          }
+
+          mjx-container [rspace="4"] {
+            margin-right: 0.278em;
+          }
+
+          mjx-container [rspace="5"] {
+            margin-right: 0.333em;
+          }
+
+          mjx-container [size="s"] {
+            font-size: 70.7%;
+          }
+
+          mjx-container [size="ss"] {
+            font-size: 50%;
+          }
+
+          mjx-container [size="Tn"] {
+            font-size: 60%;
+          }
+
+          mjx-container [size="sm"] {
+            font-size: 85%;
+          }
+
+          mjx-container [size="lg"] {
+            font-size: 120%;
+          }
+
+          mjx-container [size="Lg"] {
+            font-size: 144%;
+          }
+
+          mjx-container [size="LG"] {
+            font-size: 173%;
+          }
+
+          mjx-container [size="hg"] {
+            font-size: 207%;
+          }
+
+          mjx-container [size="HG"] {
+            font-size: 249%;
+          }
+
+          mjx-container [width="full"] {
+            width: 100%;
+          }
+
+          mjx-box {
+            display: inline-block;
+          }
+
+          mjx-block {
+            display: block;
+          }
+
+          mjx-itable {
+            display: inline-table;
+          }
+
+          mjx-row {
+            display: table-row;
+          }
+
+          mjx-row>* {
+            display: table-cell;
+          }
+
+          mjx-mtext {
+            display: inline-block;
+          }
+
+          mjx-mstyle {
+            display: inline-block;
+          }
+
+          mjx-merror {
+            display: inline-block;
+            color: red;
+            background-color: yellow;
+          }
+
+          mjx-mphantom {
+            visibility: hidden;
+          }
+
+          mjx-assistive-mml {
+            top: 0px;
+            left: 0px;
+            clip: rect(1px, 1px, 1px, 1px);
+            user-select: none;
+            position: absolute !important;
+            padding: 1px 0px 0px !important;
+            border: 0px !important;
+            display: block !important;
+            width: auto !important;
+            overflow: hidden !important;
+          }
+
+          mjx-assistive-mml[display="block"] {
+            width: 100% !important;
+          }
+
+          mjx-math {
+            display: inline-block;
+            text-align: left;
+            line-height: 0;
+            text-indent: 0px;
+            font-style: normal;
+            font-weight: normal;
+            font-size: 100%;
+            letter-spacing: normal;
+            border-collapse: collapse;
+            overflow-wrap: normal;
+            word-spacing: normal;
+            white-space: nowrap;
+            direction: ltr;
+            padding: 1px 0px;
+          }
+
+          mjx-container[jax="CHTML"][display="true"] {
+            display: block;
+            text-align: center;
+            margin: 1em 0px;
+          }
+
+          mjx-container[jax="CHTML"][display="true"][width="full"] {
+            display: flex;
+          }
+
+          mjx-container[jax="CHTML"][display="true"] mjx-math {
+            padding: 0px;
+          }
+
+          mjx-container[jax="CHTML"][justify="left"] {
+            text-align: left;
+          }
+
+          mjx-container[jax="CHTML"][justify="right"] {
+            text-align: right;
+          }
+
+          mjx-msup {
+            display: inline-block;
+            text-align: left;
+          }
+
+          mjx-mi {
+            display: inline-block;
+            text-align: left;
+          }
+
+          mjx-c {
+            display: inline-block;
+          }
+
+          mjx-utext {
+            display: inline-block;
+            padding: 0.75em 0px 0.2em;
+          }
+
+          mjx-texatom {
+            display: inline-block;
+            text-align: left;
+          }
+
+          mjx-mn {
+            display: inline-block;
+            text-align: left;
+          }
+
+          mjx-mo {
+            display: inline-block;
+            text-align: left;
+          }
+
+          mjx-stretchy-h {
+            display: inline-table;
+            width: 100%;
+          }
+
+          mjx-stretchy-h>* {
+            display: table-cell;
+            width: 0px;
+          }
+
+          mjx-stretchy-h>*>mjx-c {
+            display: inline-block;
+            transform: scaleX(1);
+          }
+
+          mjx-stretchy-h>*>mjx-c::before {
+            display: inline-block;
+            width: initial;
+          }
+
+          mjx-stretchy-h>mjx-ext {
+            overflow: clip visible;
+            width: 100%;
+          }
+
+          mjx-stretchy-h>mjx-ext>mjx-c::before {
+            transform: scaleX(500);
+          }
+
+          mjx-stretchy-h>mjx-ext>mjx-c {
+            width: 0px;
+          }
+
+          mjx-stretchy-h>mjx-beg>mjx-c {
+            margin-right: -0.1em;
+          }
+
+          mjx-stretchy-h>mjx-end>mjx-c {
+            margin-left: -0.1em;
+          }
+
+          mjx-stretchy-v {
+            display: inline-block;
+          }
+
+          mjx-stretchy-v>* {
+            display: block;
+          }
+
+          mjx-stretchy-v>mjx-beg {
+            height: 0px;
+          }
+
+          mjx-stretchy-v>mjx-end>mjx-c {
+            display: block;
+          }
+
+          mjx-stretchy-v>*>mjx-c {
+            transform: scaleY(1);
+            transform-origin: left center;
+            overflow: hidden;
+          }
+
+          mjx-stretchy-v>mjx-ext {
+            display: block;
+            height: 100%;
+            box-sizing: border-box;
+            border: 0px solid transparent;
+            overflow: visible clip;
+          }
+
+          mjx-stretchy-v>mjx-ext>mjx-c::before {
+            width: initial;
+            box-sizing: border-box;
+          }
+
+          mjx-stretchy-v>mjx-ext>mjx-c {
+            transform: scaleY(500) translateY(0.075em);
+            overflow: visible;
+          }
+
+          mjx-mark {
+            display: inline-block;
+            height: 0px;
+          }
+
+          mjx-c::before {
+            display: block;
+            width: 0px;
+          }
+
+          .MJX-TEX {
+            font-family: MJXZERO, MJXTEX;
+          }
+
+          .TEX-B {
+            font-family: MJXZERO, MJXTEX-B;
+          }
+
+          .TEX-I {
+            font-family: MJXZERO, MJXTEX-I;
+          }
+
+          .TEX-MI {
+            font-family: MJXZERO, MJXTEX-MI;
+          }
+
+          .TEX-BI {
+            font-family: MJXZERO, MJXTEX-BI;
+          }
+
+          .TEX-S1 {
+            font-family: MJXZERO, MJXTEX-S1;
+          }
+
+          .TEX-S2 {
+            font-family: MJXZERO, MJXTEX-S2;
+          }
+
+          .TEX-S3 {
+            font-family: MJXZERO, MJXTEX-S3;
+          }
+
+          .TEX-S4 {
+            font-family: MJXZERO, MJXTEX-S4;
+          }
+
+          .TEX-A {
+            font-family: MJXZERO, MJXTEX-A;
+          }
+
+          .TEX-C {
+            font-family: MJXZERO, MJXTEX-C;
+          }
+
+          .TEX-CB {
+            font-family: MJXZERO, MJXTEX-CB;
+          }
+
+          .TEX-FR {
+            font-family: MJXZERO, MJXTEX-FR;
+          }
+
+          .TEX-FRB {
+            font-family: MJXZERO, MJXTEX-FRB;
+          }
+
+          .TEX-SS {
+            font-family: MJXZERO, MJXTEX-SS;
+          }
+
+          .TEX-SSB {
+            font-family: MJXZERO, MJXTEX-SSB;
+          }
+
+          .TEX-SSI {
+            font-family: MJXZERO, MJXTEX-SSI;
+          }
+
+          .TEX-SC {
+            font-family: MJXZERO, MJXTEX-SC;
+          }
+
+          .TEX-T {
+            font-family: MJXZERO, MJXTEX-T;
+          }
+
+          .TEX-V {
+            font-family: MJXZERO, MJXTEX-V;
+          }
+
+          .TEX-VB {
+            font-family: MJXZERO, MJXTEX-VB;
+          }
+
+          mjx-stretchy-v mjx-c,
+          mjx-stretchy-h mjx-c {
+            font-family: MJXZERO, MJXTEX-S1, MJXTEX-S4, MJXTEX, MJXTEX-A !important;
+          }
+
+          @font-face {
+            font-family: MJXZERO;
+            src: url("app://obsidian.md/lib/mathjax/output/chtml/fonts/woff-v2/MathJax_Zero.woff") format("woff");
+          }
+
+          @font-face {
+            font-family: MJXTEX;
+            src: url("app://obsidian.md/lib/mathjax/output/chtml/fonts/woff-v2/MathJax_Main-Regular.woff") format("woff");
+          }
+
+          @font-face {
+            font-family: MJXTEX-B;
+            src: url("app://obsidian.md/lib/mathjax/output/chtml/fonts/woff-v2/MathJax_Main-Bold.woff") format("woff");
+          }
+
+          @font-face {
+            font-family: MJXTEX-I;
+            src: url("app://obsidian.md/lib/mathjax/output/chtml/fonts/woff-v2/MathJax_Math-Italic.woff") format("woff");
+          }
+
+          @font-face {
+            font-family: MJXTEX-MI;
+            src: url("app://obsidian.md/lib/mathjax/output/chtml/fonts/woff-v2/MathJax_Main-Italic.woff") format("woff");
+          }
+
+          @font-face {
+            font-family: MJXTEX-BI;
+            src: url("app://obsidian.md/lib/mathjax/output/chtml/fonts/woff-v2/MathJax_Math-BoldItalic.woff") format("woff");
+          }
+
+          @font-face {
+            font-family: MJXTEX-S1;
+            src: url("app://obsidian.md/lib/mathjax/output/chtml/fonts/woff-v2/MathJax_Size1-Regular.woff") format("woff");
+          }
+
+          @font-face {
+            font-family: MJXTEX-S2;
+            src: url("app://obsidian.md/lib/mathjax/output/chtml/fonts/woff-v2/MathJax_Size2-Regular.woff") format("woff");
+          }
+
+          @font-face {
+            font-family: MJXTEX-S3;
+            src: url("app://obsidian.md/lib/mathjax/output/chtml/fonts/woff-v2/MathJax_Size3-Regular.woff") format("woff");
+          }
+
+          @font-face {
+            font-family: MJXTEX-S4;
+            src: url("app://obsidian.md/lib/mathjax/output/chtml/fonts/woff-v2/MathJax_Size4-Regular.woff") format("woff");
+          }
+
+          @font-face {
+            font-family: MJXTEX-A;
+            src: url("app://obsidian.md/lib/mathjax/output/chtml/fonts/woff-v2/MathJax_AMS-Regular.woff") format("woff");
+          }
+
+          @font-face {
+            font-family: MJXTEX-C;
+            src: url("app://obsidian.md/lib/mathjax/output/chtml/fonts/woff-v2/MathJax_Calligraphic-Regular.woff") format("woff");
+          }
+
+          @font-face {
+            font-family: MJXTEX-CB;
+            src: url("app://obsidian.md/lib/mathjax/output/chtml/fonts/woff-v2/MathJax_Calligraphic-Bold.woff") format("woff");
+          }
+
+          @font-face {
+            font-family: MJXTEX-FR;
+            src: url("app://obsidian.md/lib/mathjax/output/chtml/fonts/woff-v2/MathJax_Fraktur-Regular.woff") format("woff");
+          }
+
+          @font-face {
+            font-family: MJXTEX-FRB;
+            src: url("app://obsidian.md/lib/mathjax/output/chtml/fonts/woff-v2/MathJax_Fraktur-Bold.woff") format("woff");
+          }
+
+          @font-face {
+            font-family: MJXTEX-SS;
+            src: url("app://obsidian.md/lib/mathjax/output/chtml/fonts/woff-v2/MathJax_SansSerif-Regular.woff") format("woff");
+          }
+
+          @font-face {
+            font-family: MJXTEX-SSB;
+            src: url("app://obsidian.md/lib/mathjax/output/chtml/fonts/woff-v2/MathJax_SansSerif-Bold.woff") format("woff");
+          }
+
+          @font-face {
+            font-family: MJXTEX-SSI;
+            src: url("app://obsidian.md/lib/mathjax/output/chtml/fonts/woff-v2/MathJax_SansSerif-Italic.woff") format("woff");
+          }
+
+          @font-face {
+            font-family: MJXTEX-SC;
+            src: url("app://obsidian.md/lib/mathjax/output/chtml/fonts/woff-v2/MathJax_Script-Regular.woff") format("woff");
+          }
+
+          @font-face {
+            font-family: MJXTEX-T;
+            src: url("app://obsidian.md/lib/mathjax/output/chtml/fonts/woff-v2/MathJax_Typewriter-Regular.woff") format("woff");
+          }
+
+          @font-face {
+            font-family: MJXTEX-V;
+            src: url("app://obsidian.md/lib/mathjax/output/chtml/fonts/woff-v2/MathJax_Vector-Regular.woff") format("woff");
+          }
+
+          @font-face {
+            font-family: MJXTEX-VB;
+            src: url("app://obsidian.md/lib/mathjax/output/chtml/fonts/woff-v2/MathJax_Vector-Bold.woff") format("woff");
+          }
+
+          mjx-c.mjx-c1D45B.TEX-I::before {
+            padding: 0.442em 0.6em 0.011em 0px;
+            content: "n";
+          }
+
+          mjx-c.mjx-c32::before {
+            padding: 0.666em 0.5em 0px 0px;
+            content: "2";
+          }
+
+          mjx-c.mjx-cD7::before {
+            padding: 0.491em 0.778em 0px 0px;
+            content: "×";
+          }
+
+          mjx-c.mjx-c34::before {
+            padding: 0.677em 0.5em 0px 0px;
+            content: "4";
+          }
+        </style>
+        <div class="markdown-preview-sizer markdown-preview-section" style="padding-bottom: ; padding-top: var(--file-margins); padding-right: var(--file-margins); padding-left: var(--file-margins); width: 100%; position: absolute;">
+          <div class="markdown-preview-pusher" style="width: 1px; height: 0.1px; margin-bottom: 0px;"></div>
+          <div class="mod-header">
+            <div class="inline-title" contenteditable="true" spellcheck="true" autocapitalize="on" tabindex="-1" enterkeyhint="done">index</div>
+          </div>
+          <div>
+            <p><a data-href="Faux Pixel Art with Blender, Rust, Fancy Color Spaces and 'Borrowed' Algorithms" href="all-published/miscellaneous-tech/faux-pixel-art-with-blender,-rust,-fancy-color-spaces-and-'borrowed'-algorithms.html" class="internal-link" target="_self" rel="noopener">Faux Pixel Art with Blender, Rust, Fancy Color Spaces and 'Borrowed' Algorithms</a></p>
+          </div>
+          <div class="mod-footer">
+            <div class="embedded-backlinks" style="display: none;"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="sidebar-right sidebar">
+      <div class="sidebar-content"><span class="sidebar-section-header">Interactive Graph</span>
+        <div class="graph-view-placeholder">
+          <div class="graph-view-container">
+            <div class="graph-icon graph-expand" role="button" aria-label="Expand" data-tooltip-position="top"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="svg-icon lucide-arrow-up-right">
+                <line x1="7" y1="17" x2="17" y2="7"></line>
+                <polyline points="7 7 17 7 17 17"></polyline>
+              </svg></div>
+            <canvas id="graph-canvas" width="512px" height="512px"></canvas>
+          </div>
+        </div>
+        <div class="tree-container outline-tree" data-depth="0">
+          <div class="tree-header"><span class="sidebar-section-header">Table Of Contents</span><button class="clickable-icon collapse-tree-button"><iconify-icon icon="ph:arrows-in-line-horizontal-bold" width="18px" height="18px" rotate="90deg" color="currentColor"></iconify-icon></button></div>
+          <div class="tree-scroll-area"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+
+</html>

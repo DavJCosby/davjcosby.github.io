@@ -22,13 +22,13 @@
   <!-- Graph View Data -->
   <script>
     let nodes = {
-      "nodeCount": 1,
-      "linkCount": 0,
-      "radii": [null],
-      "labels": ["Faux Pixel Art with Blender, Rust, Fancy Color Spaces and 'Borrowed' Algorithms"],
-      "paths": ["all-published/miscellaneous-tech/faux-pixel-art-with-blender,-rust,-fancy-color-spaces-and-'borrowed'-algorithms.html"],
-      "linkSources": [],
-      "linkTargets": []
+      "nodeCount": 2,
+      "linkCount": 1,
+      "radii": [7, 7],
+      "labels": ["index", "Faux Pixel Art with Blender, Rust, Fancy Color Spaces and 'Borrowed' Algorithms"],
+      "paths": ["all-published/index.html", "all-published/miscellaneous-tech/faux-pixel-art-with-blender,-rust,-fancy-color-spaces-and-'borrowed'-algorithms.html"],
+      "linkSources": [0],
+      "linkTargets": [1]
     };
     let attractionForce = 1;
     let linkLength = 10;
@@ -78,6 +78,10 @@
                       <div class="tree-item-children"></div>
                     </div>
                   </div>
+                </div>
+                <div class="tree-item mod-tree-file" data-depth="2">
+                  <div class="tree-item-contents"><a class="tree-item-link" href="all-published/index.html"><span class="tree-item-title">index</span></a></div>
+                  <div class="tree-item-children"></div>
                 </div>
               </div>
             </div>
@@ -983,7 +987,7 @@
           </div>
           <div>
             <p><img alt="bad rainbow" src="https://bottosson.github.io/img/oklab/hue_hsv.png" referrerpolicy="no-referrer"><br>
-              Compare that to gigachad Oklab, when you lock <code>L</code> and manipulate<sup data-footnote-id="fnref-1-1a1715b4a943e67b" class="footnote-ref" id="fnref-1-1a1715b4a943e67b"><a href="#fn-1-1a1715b4a943e67b" class="footnote-link" target="_self" rel="noopener">[1]</a></sup> <code>a</code> and <code>b</code> to create a rainbow, here's what we get.<br>
+              Compare that to gigachad Oklab, when you lock <code>L</code> and manipulate<sup data-footnote-id="fnref-1-804ccf419fa5c6a0" class="footnote-ref" id="fnref-1-804ccf419fa5c6a0"><a href="#fn-1-804ccf419fa5c6a0" class="footnote-link" target="_self" rel="noopener">[1]</a></sup> <code>a</code> and <code>b</code> to create a rainbow, here's what we get.<br>
               <img alt="good rainbow" src="https://bottosson.github.io/img/oklab/hue_oklab.png" referrerpolicy="no-referrer">
             </p>
           </div>
@@ -1524,7 +1528,7 @@
             <section class="footnotes">
               <hr>
               <ol>
-                <li data-line="0" data-footnote-id="fn-1-1a1715b4a943e67b" id="fn-1-1a1715b4a943e67b">Just as RGB has color spaces like HSV and HSL to manipulate hue, OkLab has OkHsv and OkHsl. <a data-tooltip-position="top" aria-label="https://bottosson.github.io/posts/colorpicker/" rel="noopener" class="external-link" href="https://bottosson.github.io/posts/colorpicker/" target="_blank">Read more here.</a><a href="#fnref-1-1a1715b4a943e67b" class="footnote-backref footnote-link" target="_self" rel="noopener">↩︎</a></li>
+                <li data-line="0" data-footnote-id="fn-1-804ccf419fa5c6a0" id="fn-1-804ccf419fa5c6a0">Just as RGB has color spaces like HSV and HSL to manipulate hue, OkLab has OkHsv and OkHsl. <a data-tooltip-position="top" aria-label="https://bottosson.github.io/posts/colorpicker/" rel="noopener" class="external-link" href="https://bottosson.github.io/posts/colorpicker/" target="_blank">Read more here.</a><a href="#fnref-1-804ccf419fa5c6a0" class="footnote-backref footnote-link" target="_self" rel="noopener">↩︎</a></li>
               </ol>
             </section>
           </div>
